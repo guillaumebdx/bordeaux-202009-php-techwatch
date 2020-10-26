@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
@@ -16,6 +17,7 @@
 
 {% block content %}{% endblock %}
 {% block javascript %}{% endblock %}
+{% include 'Projet-2-Item/_footer.html.twig' %}
 </body>
 </html>
 
