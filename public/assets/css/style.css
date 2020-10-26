@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url("fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family:'JetBrains Mono';
+    src: url("fonts/JetBrainsMono-2.001/ttf/JetBrainsMono-Regular.ttf");
+}
+
+:root{
+    --background-color: #0B0B0B;
+    --secondary-color: #808080;
+    --titles-color: #218F76;
+
+    --font-color: #FFFFFF;
+    --primary-font: 'Poppins';
+    --secondary-font: 'JetBrains Mono';
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+h1{
+    font-family: var(--primary-font);
+    color: var(--titles-color);
+}
+
+.test1{
+    font-family: var(--primary-font);
+    color: var(--secondary-color);
+}
+
+.test2{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+}
