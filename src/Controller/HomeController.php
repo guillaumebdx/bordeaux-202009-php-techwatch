@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\ArticleManager;
+
 class HomeController extends AbstractController
 {
 
@@ -21,6 +23,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+
+        $articleManager = new ArticleManager();
+        $articleOfWeek = $articleManager->getTechnologyWatchOfWeek();
+        return $this->twig->render('Home/index.html.twig', ['articleOfWeek' => $articleOfWeek]);
     }
 }
