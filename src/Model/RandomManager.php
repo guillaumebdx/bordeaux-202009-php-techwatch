@@ -4,7 +4,9 @@
 namespace App\Model;
 
 
-class RandomManager
+use App\Controller\AbstractController;
+
+class RandomManager extends AbstractManager
 {
     private $viewRandom;
 
@@ -79,4 +81,3 @@ class RandomManager
         return $this->pdo->query('SELECT * FROM article ORDER BY star DESC ' . $this->viewLike)->fetchAll();
     }
 }
-
