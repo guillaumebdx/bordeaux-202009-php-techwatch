@@ -39,15 +39,6 @@ h1{
     color: var(--titles-color);
 }
 
-.test1{
-    font-family: var(--primary-font);
-    color: var(--secondary-color);
-}
-
-.test2{
-    font-family: var(--secondary-font);
-    color: var(--font-color);
-}
 
 /* footer start */
 footer {
