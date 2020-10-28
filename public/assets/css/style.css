@@ -230,3 +230,18 @@ footer {
     }
 }
 /* footer end */
+
+/* techOfWeek start */
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.box-icon {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* techOfWeek end */

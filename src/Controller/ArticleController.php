@@ -17,4 +17,11 @@ class ArticleController extends AbstractController
             'articleOfWeek' => $articleOfWeek
         ]);
     }
+
+    public function like($articleId)
+    {
+        $articleManager = new ArticleManager();
+        $articleManager->addLike($articleId);
+        header('Location: /');
+    }
 }

@@ -23,9 +23,10 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-
         $articleManager = new ArticleManager();
         $articleOfWeek = $articleManager->getTechnologyWatchOfWeek();
-        return $this->twig->render('Home/index.html.twig', ['articleOfWeek' => $articleOfWeek]);
+        return $this->twig->render('Home/index.html.twig', [
+            'articleOfWeek' => $articleOfWeek,
+        ]);
     }
 }
