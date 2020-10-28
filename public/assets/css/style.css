@@ -34,6 +34,10 @@ body{
     background-color: var(--background-color);
 }
 
+nav{
+    font-family: var(--primary-font);
+}
+
 h1{
     font-family: var(--primary-font);
     color: var(--titles-color);
