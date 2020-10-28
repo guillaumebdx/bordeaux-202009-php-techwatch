@@ -4,11 +4,13 @@
 namespace App\Model;
 
 
-class Random
+class RandomManager
 {
     private $viewRandom;
 
     private $newView;
+
+    private $viewLike;
 
     /**
      * @return mixed
@@ -42,6 +44,22 @@ class Random
         $this->viewRandom = $viewRandom;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getViewLike()
+    {
+        return $this->viewLike;
+    }
+
+    /**
+     * @param mixed $viewLike
+     */
+    public function setViewLike($viewLike): void
+    {
+        $this->viewLike = $viewLike;
+    }
+
 
     public function random(): array
     {
@@ -50,9 +68,15 @@ class Random
 
 
 
-    public function new(): array
+    public function trends(): array
     {
-        return $this->pdo->query('SELECT * FROM article ORDER BY created_at ASC' . $this->newView)->fetchAll();
+        return $this->pdo->query('SELECT * FROM article ORDER BY created_at DESC ' . $this->newView)->fetchAll();
     }
 
+
+    public function star(): array
+    {
+        return $this->pdo->query('SELECT * FROM article ORDER BY star DESC ' . $this->viewLike)->fetchAll();
+    }
 }
+
