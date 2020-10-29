@@ -231,6 +231,22 @@ footer {
 }
 /* footer end */
 
+
+/* techOfWeek start */
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.box-icon {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* techOfWeek end */
+
 .carrouselHome{
     display: inline-flex;
     margin: 3em;
@@ -239,3 +255,4 @@ footer {
 .card{
     margin: 3em;
 }
+
