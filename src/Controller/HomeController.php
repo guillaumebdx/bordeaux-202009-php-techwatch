@@ -23,6 +23,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+
+
         $articleManagerRandom = new ArticleManager();
         $articleRandom = $articleManagerRandom->getArticleRand();
 
@@ -31,6 +33,7 @@ class HomeController extends AbstractController
 
         $articleManagerDate = new ArticleManager();
         $articleDate = $articleManagerDate->getArticleByDate();
+
 
         $articleManager = new ArticleManager();
         $articleOfWeek = $articleManager->getTechnologyWatchOfWeek();
