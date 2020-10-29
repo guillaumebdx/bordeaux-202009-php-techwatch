@@ -3,11 +3,18 @@
         <img src="{{ articleOfWeek.image_url }}" class="card-img" alt="technological watch of the week">
         <div class="card-img-overlay">
             <div>
-                <h5 class="card-title">{{ articleOfWeek.title }}</h5>
-            </div>
-            <div>
-                <i class="fa fa-star" aria-hidden="true">{{ articleOfWeek.star }}</i>
+                <h1 class="card-title">{{ articleOfWeek.title }}</h1>
             </div>
         </div>
     </div>
 </a>
+<div class="box-icon">
+    {% include 'Projet-2-Item/_like.html.twig' %}
+    <div>
+        <a href="#">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-commenting" aria-hidden="true"></i>
+            </button>
+        </a>
+    </div>
+</div>
