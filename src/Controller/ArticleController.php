@@ -18,6 +18,13 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    public function like($articleId)
+    {
+        $articleManager = new ArticleManager();
+        $articleManager->addLike($articleId);
+        header('Location: /');
+    }
+
     public function articleRand()
     {
         $articleManagerRandom = new ArticleManager();
