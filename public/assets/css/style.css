@@ -56,7 +56,6 @@ h1{
 /* footer start */
 footer {
     font-family: var(--primary-font);
-    height: 100vh;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -126,6 +125,10 @@ footer {
 .liste-media a .fa {
     font-size: 3em;
     color: var(--secondary-color);
+}
+
+.footer-medias {
+    line-height: 1;
 }
 
 .footer-medias ul {
@@ -231,3 +234,12 @@ footer {
     }
 }
 /* footer end */
+
+.carrouselHome{
+    display: inline-flex;
+    margin: 3em;
+}
+
+.card{
+    margin: 3em;
+}

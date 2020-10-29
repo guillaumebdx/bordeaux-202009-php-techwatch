@@ -1,7 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p class="test1">TEST police</p>
-    <p class="test2">TEST police</p>
+    <h1>Tech Watch!</h1>
+    {% include 'Projet-2-Item/_technologicalWatchOfWeek.html.twig' %}
+    {% include 'Projet-2-Item/_technologicalWatchRandom.html.twig' %}
+    {% include 'Projet-2-Item/_technologicalWatchByDate.html.twig' %}
+    {% include 'Projet-2-Item/_technologicalWatchByTrend.html.twig' %}
 {% endblock %}

@@ -1,0 +1,13 @@
+<a href="{{ articleOfWeek.article_url }}">
+    <div class="card bg-dark text-white">
+        <img src="{{ articleOfWeek.image_url }}" class="card-img" alt="technological watch of the week">
+        <div class="card-img-overlay">
+            <div>
+                <h5 class="card-title">{{ articleOfWeek.title }}</h5>
+            </div>
+            <div>
+                <i class="fa fa-star" aria-hidden="true">{{ articleOfWeek.star }}</i>
+            </div>
+        </div>
+    </div>
+</a>
