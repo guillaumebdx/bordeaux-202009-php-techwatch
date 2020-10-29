@@ -43,16 +43,6 @@ h1{
     color: var(--titles-color);
 }
 
-.test1{
-    font-family: var(--primary-font);
-    color: var(--secondary-color);
-}
-
-.test2{
-    font-family: var(--secondary-font);
-    color: var(--font-color);
-}
-
 /* footer start */
 footer {
     font-family: var(--primary-font);
@@ -247,16 +237,21 @@ footer {
     display: flex;
     justify-content: space-around;
 }
-
-
 /* techOfWeek end */
 
+/* carousel home page start */
+
 .carrouselHome{
+
     display: inline-flex;
     margin: 3em;
 }
-
 .card{
     margin: 3em;
 }
+.card-title{
+    font-family: var(--secondary-font);
+    color: var(--titles-color);
+}
+/* carousel home page end */
 
