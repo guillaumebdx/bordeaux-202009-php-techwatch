@@ -25,19 +25,19 @@ class ArticleManager extends AbstractManager
         return $this->pdo->query($query)->fetch();
     }
 
-    public function getTechnologyWatchRand(): array
+    public function getArticleRand(): array
     {
         $query = "SELECT * FROM article ORDER BY RAND() LIMIT 15";
         return $this->pdo->query($query)->fetchAll();
     }
 
-    public function getTechnologyWatchByDate(): array
+    public function getArticleByDate(): array
     {
         $query = "SELECT * FROM article ORDER BY created_at DESC LIMIT 15";
         return $this->pdo->query($query)->fetchAll();
     }
 
-    public function getTechnologyWatchByStar(): array
+    public function getArticleByStar(): array
     {
         $query = "SELECT * FROM article ORDER BY star DESC LIMIT 15";
         return $this->pdo->query($query)->fetchAll();

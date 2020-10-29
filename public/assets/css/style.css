@@ -39,7 +39,6 @@ h1{
     color: var(--titles-color);
 }
 
-
 /* footer start */
 footer {
     font-family: var(--primary-font);
@@ -222,11 +221,18 @@ footer {
 }
 /* footer end */
 
-.carrouselHome{
+/* carousel home page start */
+
+.carouselHome{
     display: inline-flex;
     margin: 3em;
 }
-
 .card{
     margin: 3em;
 }
+
+.card-title{
+    font-family: var(--secondary-font);
+    color: var(--titles-color);
+}
+/* carousel home page end */
