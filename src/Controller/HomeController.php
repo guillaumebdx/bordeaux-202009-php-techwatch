@@ -36,7 +36,7 @@ class HomeController extends AbstractController
 
 
         $articleManager = new ArticleManager();
-        $articleOfWeek = $articleManager->getTechnologyWatchOfWeek();
+        $articleOfWeek = $articleManager->getArticleOfWeek();
         return $this->twig->render('Home/index.html.twig', [
             'articleOfWeek' => $articleOfWeek,
             'articleRandom' => $articleRandom,
