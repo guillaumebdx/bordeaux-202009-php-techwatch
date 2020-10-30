@@ -1,0 +1,13 @@
+
+<div class = 'carouselHome'>
+{% for article in articleRandom %}
+<div class="card" style="width: 18rem;">
+    <a href="{{ article.article_url }}">
+    <img src="{{ article.image_url }}" class="card-img-top" alt="article image random">
+    <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+    </div>
+    </a>
+</div>
+{% endfor %}
+</div>

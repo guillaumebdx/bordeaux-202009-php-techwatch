@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url("fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family:'JetBrains Mono';
+    src: url("fonts/JetBrainsMono-2.001/ttf/JetBrainsMono-Regular.ttf");
+}
+
+:root{
+    --background-color: #0B0B0B;
+    --secondary-color: #808080;
+    --titles-color: #218F76;
+
+    --font-color: #FFFFFF;
+    --primary-font: 'Poppins';
+    --secondary-font: 'JetBrains Mono';
+
+    --twitter-color: #1da1f2;
+    --instagram-color: #8004d1;
+    --facebook-color: #3f88f0;
+    --github-color: #FFFFFF;
+    --youtube_color: #f21501;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background-color);
+}
+
+nav{
+    font-family: var(--primary-font);
+}
+
+h1{
+    font-family: var(--primary-font);
+    color: var(--titles-color);
+}
+
+/* footer start */
+footer {
+    font-family: var(--primary-font);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-top: 10px solid var(--secondary-color);
+    width: 100%;
+    background: var(--background-color);
+    color: var(--font-color);
+}
+.contenu-footer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+    padding: 50px 0 100px;
+}
+
+.bloc {
+    width: 100%;
+    margin: 0 30px;
+}
+
+.footer-contact h3,
+.footer-services h3,
+.footer-medias h3 {
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
+.footer-contact p {
+    padding: 5px 0;
+}
+
+.liste-services,
+.liste-media {
+    list-style-type: none;
+}
+.liste-services li {
+    padding: 2px 0;
+}
+.liste-services a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+.liste-services a:hover {
+    color: var(--titles-color);
+}
+
+.liste-media {
+    position: relative;
+    right: 10px;
+}
+.liste-media img {
+    width: 40px;
+    margin: 10px 10px;
+}
+.liste-media a {
+    text-decoration: none;
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.liste-media a .fa {
+    font-size: 3em;
+    color: var(--secondary-color);
+}
+
+.footer-medias {
+    line-height: 1;
+}
+
+.footer-medias ul {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-medias ul li a{
+    width: 100%;
+    height: auto;
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+}
+
+.footer-medias ul li a::before {
+    font-family: fontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.twitter::before {
+    content: '\f099';
+    color: var(--twitter-color);
+    border-bottom: 4px solid var(--twitter-color);
+}
+
+.insta::before {
+    content: '\f16d';
+    color: var(--instagram-color);
+    border-bottom: 4px solid var(--instagram-color);
+}
+
+.facebook::before {
+    content: '\f230';
+    color: var(--facebook-color);
+    border-bottom: 4px solid var(--facebook-color);
+}
+
+.github::before {
+    content: '\f09b';
+    color: var(--github-color);
+    border-bottom: 4px solid var(--github-color);
+}
+
+.youtube::before {
+    content: '\f16a';
+    color: var(--youtube_color);
+    border-bottom: 4px solid var(--youtube_color);
+}
+
+
+.footer-medias ul li a:hover::before {
+    height: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+
+    .contenu-footer {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .bloc {
+        width: 40%;
+        margin: 0 0;
+    }
+
+    .bloc:nth-child(1),
+    .bloc:nth-child(2) {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .contenu-footer {
+        width: 100%;
+    }
+
+    .bloc {
+        width: 400px;
+        margin: 30px 30px;
+    }
+
+    .bloc:nth-child(1),
+    .bloc:nth-child(2) {
+        margin-bottom: 30px;
+    }
+
+    .bloc:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .liste-media {
+        flex-wrap: wrap;
+    }
+}
+/* footer end */
+
+
+/* techOfWeek start */
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.box-icon {
+    display: flex;
+    justify-content: space-around;
+}
+/* techOfWeek end */
+
+/* carousel home page start */
+
+.carouselHome{
+
+    display: inline-flex;
+    margin: 3em;
+}
+.card{
+    margin: 3em;
+}
+.card-title{
+    font-family: var(--secondary-font);
+    color: var(--titles-color);
+}
+/* carousel home page end */
+

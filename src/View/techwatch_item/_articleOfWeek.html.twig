@@ -1,0 +1,11 @@
+<a href="{{ articleOfWeek.article_url }}">
+    <div class="card bg-dark text-white">
+        <img src="{{ articleOfWeek.image_url }}" class="card-img" alt="technological watch of the week">
+        <div class="card-img-overlay">
+            <div>
+                <h1 class="card-title">{{ articleOfWeek.title }}</h1>
+            </div>
+        </div>
+    </div>
+</a>
+{% include 'techwatch_item/_cardButtons.html.twig' %}
