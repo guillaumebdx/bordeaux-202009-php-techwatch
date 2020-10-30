@@ -11,9 +11,9 @@ class ArticleController extends AbstractController
     public function index()
     {
         $articleManager = new ArticleManager();
-        $articleOfWeek = $articleManager->getTechnologyWatchOfWeek();
+        $articleOfWeek = $articleManager->getArticleOfWeek();
 
-        return $this->twig->render('Projet-2-Item/index.html.twig', [
+        return $this->twig->render('techwatch_item/index.html.twig', [
             'articleOfWeek' => $articleOfWeek
         ]);
     }

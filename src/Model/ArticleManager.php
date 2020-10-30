@@ -19,7 +19,7 @@ class ArticleManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function getTechnologyWatchOfWeek(): array
+    public function getArticleOfWeek(): array
     {
         $query = "SELECT * FROM article WHERE week(created_at)=week(curdate()) ORDER BY star DESC LIMIT 1";
         return $this->pdo->query($query)->fetch();
