@@ -1,3 +1,4 @@
+<h2 class="titre-affichage-articles-accueil">Articles aléatoires</h2>
 <div id="carouselArticleRandom" class="carousel slide" data-ride="carousel" data-interval="0">
     <ol class="carousel-indicators">
         <li data-target="#carouselArticleRandom" data-slide-to="0" class="active"></li>
@@ -7,17 +8,23 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="cards-box">
-
+                {% for article in articleRandom|slice(0,5) %}
+                    {% include '_articleCard.html.twig' %}
+                {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-
+                {% for article in articleRandom|slice(5,5) %}
+                    {% include '_articleCard.html.twig' %}
+                {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-
+                {% for article in articleRandom|slice(10,5) %}
+                    {% include '_articleCard.html.twig' %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -30,3 +37,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+
+

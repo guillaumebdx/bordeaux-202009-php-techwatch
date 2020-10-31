@@ -261,3 +261,45 @@ footer {
 }
 /* carousel home page end */
 
+/* card home page display start*/
+.card-article{
+    background-color: var(--background-color);
+    border: solid 2px var(--secondary-color);
+    text-align: center;
+    border-radius: 15%;
+}
+
+.card-img-top{
+    width: 80%;
+    margin-bottom: 1em;
+    border-radius: 5%;
+}
+
+.card-description{
+    color: var(--font-color);
+}
+
+a:-webkit-any-link:hover{
+    text-decoration: none;
+}
+
+.btn-primary{
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    border-color:var(--font-color);
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.btn-primary:hover{
+    background-color: var(--titles-color);
+    border-color: var(--font-color);
+}
+
+.titre-affichage-articles-accueil{
+    font-family: var(--primary-font);
+    margin-left: 2em;
+    margin-top: 2em;
+    color: var(--font-color);
+}
+/* card home page display end*/
