@@ -240,12 +240,6 @@ footer {
 /* techOfWeek end */
 
 /* carousel home page start */
-.carouselHome{
-
-    display: inline-flex;
-    margin: 3em;
-}
-
 .card{
     margin: 3em;
 }

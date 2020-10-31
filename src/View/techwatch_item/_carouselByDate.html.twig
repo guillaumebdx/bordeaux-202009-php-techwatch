@@ -9,21 +9,21 @@
         <div class="carousel-item active">
             <div class="cards-box">
                 {% for article in articleDate|slice(0,5) %}
-                    {% include '_articleCard.html.twig' %}
+                    {% include 'techwatch_item/_articleCard.html.twig' %}
                 {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
                 {% for article in articleDate|slice(5,5) %}
-                    {% include '_articleCard.html.twig' %}
+                    {% include 'techwatch_item/_articleCard.html.twig' %}
                 {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
                 {% for article in articleDate|slice(10,5) %}
-                    {% include '_articleCard.html.twig' %}
+                    {% include 'techwatch_item/_articleCard.html.twig' %}
                 {% endfor %}
             </div>
         </div>

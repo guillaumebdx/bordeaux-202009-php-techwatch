@@ -1,12 +1,10 @@
-<div class = 'carouselHome'>
-    <div class="card card-article" style="width: 18rem;">
-        <a href="{{ article.article_url }}">
-            <div class="card-body">
-                <img src="{{ article.image_url }}" class="card-img-top" alt="image random">
-                <h5 class="card-title">{{ article.title }}</h5>
-            </div>
-        </a>
-        <p class="card-description">{{ article.description }}</p>
-    </div>
-    {% include '_cardButtons.html.twig' %}
+<div class="card card-article" style="width: 18rem;">
+    <a href="{{ article.article_url }}">
+        <div class="card-body">
+            <img src="{{ article.image_url }}" class="card-img-top" alt="image random">
+            <h5 class="card-title">{{ article.title }}</h5>
+        </div>
+    </a>
+    <p class="card-description">{{ article.description }}</p>
+    {% include 'techwatch_item/_cardButtons.html.twig' %}
 </div>
