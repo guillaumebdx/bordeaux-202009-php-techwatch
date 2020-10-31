@@ -24,24 +24,18 @@ class HomeController extends AbstractController
     public function index()
     {
 
-
-        $articleManagerRandom = new ArticleManager();
-        $articleRandom = $articleManagerRandom->getArticleRand();
-
-        $articleManagerTrend = new ArticleManager();
-        $articleTrend = $articleManagerTrend->getArticleByStar();
-
-        $articleManagerDate = new ArticleManager();
-        $articleDate = $articleManagerDate->getArticleByDate();
-
-
         $articleManager = new ArticleManager();
+
+        $articleRandom = $articleManager->getArticleOrderBy("RAND()");
+        $articleTrend = $articleManager->getArticleOrderBy('star');
+        $articleDate = $articleManager->getArticleOrderBy('created_at');
         $articleOfWeek = $articleManager->getArticleOfWeek();
+
         return $this->twig->render('Home/index.html.twig', [
-            'articleOfWeek' => $articleOfWeek,
-            'articleRandom' => $articleRandom,
-            'articleTrend' => $articleTrend,
-            'articleDate' => $articleDate,
+            'article_of_week' => $articleOfWeek,
+            'article_random' => $articleRandom,
+            'article_trend' => $articleTrend,
+            'article_date' => $articleDate,
         ]);
     }
 }
