@@ -1,13 +1,18 @@
-
+<h2 class="titre-affichage-articles-accueil">Articles aléatoires</h2>
 <div class = 'carouselHome'>
-{% for article in articleRandom %}
-<div class="card" style="width: 18rem;">
-    <a href="{{ article.article_url }}">
-    <img src="{{ article.image_url }}" class="card-img-top" alt="article image random">
-    <div class="card-body">
-        <h5 class="card-title">{{ article.title }}</h5>
+    {% for article in articleRandom %}
+    <div class="card card-article" style="width: 18rem;">
+        <a href="{{ article.article_url }}">
+            <div class="card-body">
+                <img src="{{ article.image_url }}" class="card-img-top" alt="article image random">
+                <h5 class="card-title">{{ article.title }}</h5>
+        </a>
+        <p class="card-description">{{ article.description }}</p>
     </div>
-    </a>
+    <div class="box-icon">
+        {% include 'techwatch_item/_like.html.twig' %}
+        {% include 'techwatch_item/_comment.html.twig' %}
+    </div>
 </div>
 {% endfor %}
 </div>
