@@ -8,22 +8,22 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="cards-box">
-                {% for article in articleRandom|slice(0,5) %}
-                    {% include 'techwatch_item/_articleCard.html.twig' %}
+                {% for article in article_random|slice(0,5) %}
+                    {% include 'techwatch_item/_article_card.html.twig' %}
                 {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-                {% for article in articleRandom|slice(5,5) %}
-                    {% include 'techwatch_item/_articleCard.html.twig' %}
+                {% for article in article_random|slice(5,5) %}
+                    {% include 'techwatch_item/_article_card.html.twig' %}
                 {% endfor %}
             </div>
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-                {% for article in articleRandom|slice(10,5) %}
-                    {% include 'techwatch_item/_articleCard.html.twig' %}
+                {% for article in article_random|slice(10,5) %}
+                    {% include 'techwatch_item/_article_card.html.twig' %}
                 {% endfor %}
             </div>
         </div>

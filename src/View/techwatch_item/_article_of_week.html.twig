@@ -1,0 +1,26 @@
+<a href="{{ article_of_week.article_url }}">
+    <div class="card bg-dark text-white">
+        <img src="{{ article_of_week.image_url }}" class="card-img" alt="technological watch of the week">
+        <div class="card-img-overlay">
+            <div>
+                <h1 class="card-title">{{ article_of_week.title }}</h1>
+            </div>
+        </div>
+    </div>
+</a>
+<div class="box-icon">
+    <div class="icon">
+        <form action="/article/like/{{  article_of_week.id }}" method="post">
+            <button class="btn btn-primary btn-lg">
+                <i class="fa fa-star" aria-hidden="true"> {{  article_of_week.star }}</i>
+            </button>
+        </form>
+    </div>
+    <div>
+        <a href="#">
+            <button type="button" class="btn btn-primary btn-lg">
+                <i class="fa fa-commenting" aria-hidden="true"></i>
+            </button>
+        </a>
+    </div>
+</div>
