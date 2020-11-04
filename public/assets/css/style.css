@@ -241,17 +241,32 @@ footer {
 
 /* carousel home page start */
 .card{
-    margin: 3em;
+    margin: 1em;
 }
+
 .card-title{
     font-family: var(--secondary-font);
     color: var(--titles-color);
 }
 
+.carousel-indicators {
+    position: relative;
+}
+
+.carousel-control-next {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carousel-control-prev {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .cards-box {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
 }
 /* carousel home page end */
 
@@ -297,8 +312,6 @@ a:-webkit-any-link:hover{
     color: var(--font-color);
 }
 /* card home page display end*/
-
-
 
 /* front form start*/
 
@@ -513,3 +526,44 @@ form{
 }
 
 /* front form end*/
+*
+/* navbar start */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-box {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+}
+
+.collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-page {
+    display: flex;
+}
+
+@media screen and (max-width: 992px) {
+    .left-box {
+        display: block;
+    }
+
+    .collapse {
+        display: block;
+    }
+
+    .nav-page {
+        display: block;
+    }
+
+    .navbar-toggler:active {
+
+    }
+}
+/* navbar end */
+
