@@ -17,7 +17,6 @@
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-                {% for article in article_trend|slice(10,5) %}
                 {% for article in article_trend|slice(8,4) %}
                     {% include 'techwatch_item/_article_card.html.twig' %}
                 {% endfor %}
@@ -25,7 +24,6 @@
         </div>
         <div class="carousel-item">
             <div class="cards-box">
-                {% for article in article_trend|slice(15,5) %}
                 {% for article in article_trend|slice(12,4) %}
                     {% include 'techwatch_item/_article_card.html.twig' %}
                 {% endfor %}
