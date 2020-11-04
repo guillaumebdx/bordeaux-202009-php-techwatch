@@ -10,7 +10,7 @@ class ArticleManager extends AbstractManager
      *
      */
     const TABLE = 'article';
-    const CARD_NUMBER = 15;
+    const CARD_NUMBER = 20;
 
     /**
      *  Initializes this class.
@@ -22,8 +22,17 @@ class ArticleManager extends AbstractManager
 
     public function getArticleOfWeek(): array
     {
-        $query = "SELECT * FROM article WHERE week(created_at)=week(curdate()) ORDER BY star DESC LIMIT 1";
-        return $this->pdo->query($query)->fetch();
+        $bestArticleQuery = "SELECT week(created_at) FROM article ORDER BY star DESC LIMIT 1";
+        $lastBestArticle = $this->pdo->query($bestArticleQuery)->fetch();
+        $curdate = $this->pdo->query("SELECT week(curdate())")->fetch();
+        if ($lastBestArticle === $curdate) {
+            $query = "SELECT * FROM article WHERE week(created_at)=week(curdate()) ORDER BY star DESC LIMIT 1";
+            $statement = $this->pdo->query($query)->fetch();
+        } else {
+            $query = "SELECT * FROM article WHERE week(created_at)=week(curdate())-1 ORDER BY star DESC LIMIT 1";
+            $statement = $this->pdo->query($query)->fetch();
+        }
+        return $statement;
     }
     public function addLike($articleId):void
     {
