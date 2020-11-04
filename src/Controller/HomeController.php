@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -29,6 +30,7 @@ class HomeController extends AbstractController
         $articleTrend = $articleManager->getArticleOrderBy('star DESC');
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
         $articleOfWeek = $articleManager->getArticleOfWeek();
+
 
         return $this->twig->render('Home/index.html.twig', [
             'article_of_week' => $articleOfWeek,
