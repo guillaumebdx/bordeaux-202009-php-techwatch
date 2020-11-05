@@ -10,7 +10,7 @@ class ArticleManager extends AbstractManager
      *
      */
     const TABLE = 'article';
-    const CARD_NUMBER = 20;
+    const CARD_NUMBER = 30;
 
     /**
      *  Initializes this class.
