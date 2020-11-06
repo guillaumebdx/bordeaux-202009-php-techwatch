@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -23,25 +24,39 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-
-
-        $articleManagerRandom = new ArticleManager();
-        $articleRandom = $articleManagerRandom->getArticleRand();
-
-        $articleManagerTrend = new ArticleManager();
-        $articleTrend = $articleManagerTrend->getArticleByStar();
-
-        $articleManagerDate = new ArticleManager();
-        $articleDate = $articleManagerDate->getArticleByDate();
-
-
         $articleManager = new ArticleManager();
+
+        $articleRandom = $articleManager->getArticleOrderBy("RAND()");
+        $articleTrend = $articleManager->getArticleOrderBy('star DESC');
+        $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
         $articleOfWeek = $articleManager->getArticleOfWeek();
+
+
         return $this->twig->render('Home/index.html.twig', [
-            'articleOfWeek' => $articleOfWeek,
-            'articleRandom' => $articleRandom,
-            'articleTrend' => $articleTrend,
-            'articleDate' => $articleDate,
+            'article_of_week' => $articleOfWeek,
+            'article_random' => $articleRandom,
+            'article_trend' => $articleTrend,
+            'article_date' => $articleDate,
+        ]);
+    }
+
+    public function articlesByDate()
+    {
+        $articleManagerByDate = new ArticleManager();
+
+        $articleViewByDate = $articleManagerByDate->getArticleOrderBy('created_at DESC');
+        return $this->twig->render('articles_by_date.html.twig', [
+            'article_date_view' => $articleViewByDate,
+        ]);
+    }
+
+    public function articlesByTrend()
+    {
+        $articleManagerTrend = new ArticleManager();
+
+        $articleViewByTrend = $articleManagerTrend->getArticleOrderBy('star DESC');
+        return $this->twig->render('articles_by_trend.html.twig', [
+            'article_trend_view' => $articleViewByTrend,
         ]);
     }
 }
