@@ -3,7 +3,10 @@
 {% block content %}
     <h1>Tech Watch!</h1>
     {% include 'techwatch_item/_article_of_week.html.twig' %}
+    {% include 'techwatch_item/_article_random_mobile.html.twig' %}
     {% include 'techwatch_item/_carousel_random.html.twig' %}
+    <div id="date">
     {% include 'techwatch_item/_carousel_order_by_date.html.twig' %}
+    </div>
     {% include 'techwatch_item/_carousel_order_by_trend.html.twig' %}
 {% endblock %}
