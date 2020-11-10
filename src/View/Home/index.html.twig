@@ -3,7 +3,16 @@
 {% block content %}
     <h1>Tech Watch!</h1>
     {% include 'techwatch_item/_article_of_week.html.twig' %}
-    {% include 'techwatch_item/_carousel_random.html.twig' %}
-    {% include 'techwatch_item/_carousel_order_by_date.html.twig' %}
-    {% include 'techwatch_item/_carousel_order_by_trend.html.twig' %}
+    <h2 class="titre-affichage-articles-accueil">Articles aléatoires</h2>
+    {% set articles = article_random %}
+    {% set id = 'article_random' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
+    <h2 class="titre-affichage-articles-accueil">Derniers articles publiés</h2>
+    {% set articles = article_date %}
+    {% set id = 'article_date' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
+    <h2 class="titre-affichage-articles-accueil">Les mieux notés</h2>
+    {% set articles = article_trend %}
+    {% set id = 'article_trend' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
 {% endblock %}

@@ -30,11 +30,13 @@ class HomeController extends AbstractController
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
         $articleOfWeek = $articleManager->getArticleOfWeek();
 
-        return $this->twig->render('Home/index.html.twig', [
+        $twigs = [
             'article_of_week' => $articleOfWeek,
             'article_random' => $articleRandom,
             'article_trend' => $articleTrend,
             'article_date' => $articleDate,
-        ]);
+        ];
+
+        return $this->twig->render('Home/index.html.twig', $twigs);
     }
 }
