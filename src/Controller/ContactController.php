@@ -18,5 +18,4 @@ class ContactController extends AbstractController
             'contact_form' => $contact,
         ]);
     }
-
 }

@@ -55,7 +55,8 @@ class ArticleManager extends AbstractManager
 
     public function getArticleById($articleId)
     {
-        $query =   "SELECT a.id AS article_id, a.title, a.article_url, a.image_url, a.description, a.created_at, a.star, 
+        $query =   "SELECT a.id AS article_id, a.title, a.article_url, a.image_url, a.description, 
+                    a.created_at, a.star, 
                     u.username, 
                     c.message, c.user_id
                     FROM article a
