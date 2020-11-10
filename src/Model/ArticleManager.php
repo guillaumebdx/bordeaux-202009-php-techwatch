@@ -57,13 +57,10 @@ class ArticleManager extends AbstractManager
     {
         $query =   "SELECT a.id AS article_id, a.title, a.article_url, a.image_url, a.description, 
                     a.created_at, a.star, 
-                    u.username, 
-                    c.message, c.user_id
+                    u.username
                     FROM article a
                     JOIN user u 
                     ON u.id = a.user_id
-                    JOIN comment c
-                    ON a.id = c.article_id
                     WHERE a.id =:id";
 
         $statement = $this->pdo->prepare($query);
