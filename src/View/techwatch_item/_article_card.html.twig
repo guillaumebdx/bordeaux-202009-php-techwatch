@@ -1,10 +1,14 @@
 <div class="card card-article" style="width: 18rem;">
-    <a href="{{ article.article_url }}">
         <div class="card-body">
-            <img src="{{ article.image_url }}" class="card-img-top" alt="image random">
-            <h5 class="card-title">{{ article.title }}</h5>
+            <a href="#" class="envoi vers user page">
+                <img src="{{ article.picture }}" class="user-picture" alt="user picture">
+            </a>
+            <a href="{{ article.article_url }}">
+                <img src="{{ article.image_url }}" class="card-img-top article-picture" alt="random picture">
+                <p class="card-title">{{ article.title|length > 30 ? article.title|slice(0, 30) ~ '...' : article.title  }}</p>
+            </a>
+            <a href="#" class="card-info-plus">Voir plus</a>
         </div>
-    </a>
-    <p class="card-description">{{ article.description }}</p>
     {% include 'techwatch_item/_card_buttons.html.twig' %}
 </div>
+

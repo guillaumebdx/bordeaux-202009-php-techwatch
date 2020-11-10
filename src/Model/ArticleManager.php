@@ -37,7 +37,10 @@ class ArticleManager extends AbstractManager
     public function getArticleOrderBy(string $what): array
     {
         {
-            $query = "SELECT * FROM article ORDER BY " . $what . " LIMIT " . self::CAROUSEL_CARD_NUMBER;
+            $query = "SELECT * FROM article 
+                        JOIN user ON user.id = article.user_id 
+                        ORDER BY " . $what . " LIMIT " . self::CAROUSEL_CARD_NUMBER;
+
             return $this->pdo->query($query)->fetchAll();
         }
     }

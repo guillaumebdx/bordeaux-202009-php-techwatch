@@ -13,6 +13,7 @@
     --secondary-color: #808080;
     --form-color: #028684;
     --titles-color: #218F76;
+    --card-color: #151719;
 
     --font-color: #FFFFFF;
     --primary-font: 'Poppins';
@@ -55,6 +56,7 @@ footer {
     background: var(--background-color);
     color: var(--font-color);
 }
+
 .contenu-footer {
     width: 100%;
     margin: 0 auto;
@@ -178,7 +180,6 @@ footer {
     border-bottom: 4px solid var(--youtube_color);
 }
 
-
 .footer-medias ul li a:hover::before {
     height: 100%;
 }
@@ -226,7 +227,6 @@ footer {
 }
 /* footer end */
 
-
 /* techOfWeek start */
 .card-img-overlay {
     display: flex;
@@ -241,12 +241,20 @@ footer {
 /* techOfWeek end */
 
 /* carousel home page start */
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+
 .card{
-    margin: 1em;
+    margin-top: 5em;
+    margin-right: 1.5em;
+    margin-bottom: 3em;
+    margin-left: 1.5em;
 }
 
 .card-title{
-    font-family: var(--secondary-font);
+    font-family: var(--primary-font);
     color: var(--titles-color);
 }
 
@@ -262,25 +270,41 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 /* carousel home page end */
 
 /* card home page display start*/
 .card-article{
-    background-color: var(--background-color);
-    border: solid 2px var(--secondary-color);
+    background-color: var(--card-color);
+    border: solid 1px var(--secondary-color);
     text-align: center;
     border-radius: 15%;
+    width: 50em;
+    height: 22em;
+    transition: 0.3s ease-in-out;
+}
+
+.card-article:hover{
+    border: 3px solid var(--secondary-color);
+    height: 30em;
+}
+
+.card-article:hover .card-info-plus{
+    visibility: visible;
+}
+
+.card-article:hover .btn-primary{
+    visibility: visible;
+}
+
+.card-article:hover .user-picture{
+    visibility: visible;
 }
 
 .card-img-top{
     width: 80%;
-    margin-bottom: 1em;
     border-radius: 5%;
-}
-
-.card-description{
-    color: var(--font-color);
 }
 
 a:-webkit-any-link:hover{
@@ -288,6 +312,7 @@ a:-webkit-any-link:hover{
 }
 
 .btn-primary{
+    visibility: hidden;
     background-color: var(--secondary-color);
     color: var(--font-color);
     border-color:var(--font-color);
@@ -295,17 +320,67 @@ a:-webkit-any-link:hover{
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
 .btn-primary:hover{
     background-color: var(--titles-color);
     border-color: var(--font-color);
 }
 
-.titre-affichage-articles-accueil{
+.card-title{
     font-family: var(--primary-font);
-    margin-left: 2em;
-    margin-top: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: var(--titles-color);
+    font-size: 1.3em;
+}
+
+.btn-voir-plus{
     color: var(--font-color);
 }
+
+.btn-voir-plus:focus{
+    box-shadow: none;
+}
+
+.user-picture{
+    visibility: hidden;
+    background-size: cover;
+    border-radius: 30%;
+    width: 30%;
+    height: auto;
+    margin-top: -5em;
+    margin-bottom: 1em;
+    border: 2px solid var(--secondary-color);
+}
+
+.card-info-plus{
+    visibility: hidden;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.card-info-plus:hover{
+    color: var(--secondary-color);
+}
+
+.article-picture{
+    width: 12em;
+    margin-top: 1em;
+}
+
+.article-picture:hover{
+    box-shadow: 0 1em 1em -0.4em var(--secondary-color);
+    transform: translateY(-0.25em);
+}
+
+.title-articles-homepage{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    margin-left: 2em;
+}
+
 /* card home page display end*/
 
 /* front form start*/
@@ -517,3 +592,72 @@ a:-webkit-any-link:hover{
 
 /* front form end*/
 
+/* media queries - carousel - page accueil - affichage articles aléatoires only start */
+@media screen and (min-width: 601px){
+
+  #random-view-mobile{
+      display: none;
+  }
+}
+
+@media screen and (max-width: 600px){
+
+    #random-view-movile {
+        visibility: visible;
+    }
+
+    #carouselArticleRandom{
+        display: none;
+    }
+
+    #carouselArticleByDate{
+        display: none;
+    }
+
+    #carouselArticleByTrend{
+        display: none;
+    }
+
+    .title-articles-homepage-random{
+        margin-left: 1em;
+        font-family: var(--secondary-font);
+        color: var(--font-color);
+        font-size: 1em;
+    }
+
+    .random-mobile-view{
+        margin: 4em;
+    }
+
+    .btn-primary{
+        display: flex;
+    }
+    .icon{
+        margin-right: -10em;
+    }
+
+    .user-picture{
+        width: 25%;
+    }
+}
+
+/* media queries - carousel - page accueil - affichage articles aléatoires only end */
+
+/* articles by date page start */
+
+.articles-by-date-page{
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-left: 3em;
+    margin-top: 1em;
+}
+
+.title-articles-pages{
+    display: flex;
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    margin-left: 1em;
+    margin-top: 3em;
+}
+
+/* articles by date page end */

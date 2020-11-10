@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -38,5 +39,25 @@ class HomeController extends AbstractController
         ];
 
         return $this->twig->render('Home/index.html.twig', $twigs);
+    }
+
+    public function articlesByDate()
+    {
+        $articleManagerByDate = new ArticleManager();
+
+        $articleViewByDate = $articleManagerByDate->getArticleOrderBy('created_at DESC');
+        return $this->twig->render('articles_by_date.html.twig', [
+            'article_date_view' => $articleViewByDate,
+        ]);
+    }
+
+    public function articlesByTrend()
+    {
+        $articleManagerTrend = new ArticleManager();
+
+        $articleViewByTrend = $articleManagerTrend->getArticleOrderBy('star DESC');
+        return $this->twig->render('articles_by_trend.html.twig', [
+            'article_trend_view' => $articleViewByTrend,
+        ]);
     }
 }
