@@ -3,12 +3,23 @@
 {% block content %}
     <h1>Tech Watch!</h1>
     {% include 'techwatch_item/_article_of_week.html.twig' %}
-    {% include 'techwatch_item/_article_random_mobile.html.twig' %}
-    {% include 'techwatch_item/_carousel_random.html.twig' %}
+    <div>
+        <h2 class="title-articles-pages">Articles aléatoires</h2>
+        {% set articles = article_random %}
+        {% set id = 'article_random' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
+    </div>
     <div id="date-articles">
-        {% include 'techwatch_item/_carousel_order_by_date.html.twig' %}
+        <h2 class="title-articles-pages">Derniers articles publiés</h2>
+        {% set articles = article_date %}
+        {% set id = 'article_date' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
     </div>
     <div id="trend-articles">
-        {% include 'techwatch_item/_carousel_order_by_trend.html.twig' %}
+        <h2 class="title-articles-pages">Les mieux notés</h2>
+        {% set articles = article_trend %}
+        {% set id = 'article_trend' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
     </div>
+
 {% endblock %}

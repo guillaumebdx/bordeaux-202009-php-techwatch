@@ -11,6 +11,7 @@
 :root{
     --background-color: #0B0B0B;
     --secondary-color: #808080;
+    --form-color: #028684;
     --titles-color: #218F76;
     --card-color: #151719;
 
@@ -257,18 +258,12 @@ footer {
     color: var(--titles-color);
 }
 
-.carousel-indicators {
-    position: relative;
-}
-
 .carousel-control-next {
-    display: flex;
-    justify-content: flex-end;
+    width: 5%;
 }
 
 .carousel-control-prev {
-    display: flex;
-    justify-content: flex-start;
+    width: 5%;
 }
 
 .cards-box {
@@ -389,18 +384,9 @@ a:-webkit-any-link:hover{
 /* card home page display end*/
 
 /* front form start*/
-
-/* body{
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    background-color: black;
-}
-
-
-form{
+.register-form{
     width: 360px;
 }
-*/
 
 .fond{
     position: fixed;
@@ -408,6 +394,10 @@ form{
     left: 0;
     height: 100%;
     z-index: -1;
+}
+
+.fa {
+    font-family: 'FontAwesome';
 }
 
 .container{
@@ -454,7 +444,7 @@ form{
     grid-template-columns: 7% 93%;
     margin: 25px 0;
     padding: 5px 0;
-    border-bottom: 2px solid #d9d9d9;
+    border-bottom: 2px solid var(--font-color);
 }
 
 .login-content .input-div{
@@ -462,7 +452,7 @@ form{
 }
 
 .i{
-    color: #d9d9d9;
+    color: var(--font-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -482,7 +472,7 @@ form{
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #999;
+    color: var(--secondary-color);
     font-size: 18px;
     transition: .3s;
 }
@@ -493,7 +483,7 @@ form{
     bottom: -2px;
     width: 0%;
     height: 2px;
-    background-color: #028684;
+    background-color: var(--form-color);
     transition: .4s;
 }
 
@@ -515,7 +505,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-    color: #028684;
+    color: var(--form-color);
 }
 
 .input-div > div > input{
@@ -529,8 +519,8 @@ form{
     background: none;
     padding: 0.5rem 0.7rem;
     font-size: 1.2rem;
-    color: #028684;
-    font-family: 'poppins', sans-serif;
+    color: var(--form-color);
+    font-family: var(--primary-font);
 }
 
 .input-div.pass{
@@ -549,8 +539,8 @@ form{
     background-image: linear-gradient(315deg, #55efc4 0%, #000000 74%);
     background-size: 200%;
     font-size: 1.2rem;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
+    color: var(--font-color);
+    font-family: var(--primary-font);
     text-transform: uppercase;
     margin: 1rem 0;
     cursor: pointer;
@@ -601,46 +591,6 @@ form{
 }
 
 /* front form end*/
-
-/* navbar start */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-}
-
-.left-box {
-    display: flex;
-    flex: 2;
-    justify-content: space-between;
-}
-
-.collapse {
-    display: flex;
-    justify-content: space-between;
-}
-
-.nav-page {
-    display: flex;
-}
-
-@media screen and (max-width: 992px) {
-    .left-box {
-        display: block;
-    }
-
-    .collapse {
-        display: block;
-    }
-
-    .nav-page {
-        display: block;
-    }
-
-    .navbar-toggler:active {
-
-    }
-}
-/* navbar end */
 
 /* media queries - carousel - page accueil - affichage articles aléatoires only start */
 @media screen and (min-width: 601px){
@@ -797,5 +747,5 @@ form{
     }
 }
 
-
 /* voir-plus section - end */
+

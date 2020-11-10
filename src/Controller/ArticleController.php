@@ -8,7 +8,7 @@ use App\Model\ArticleManager;
 
 class ArticleController extends AbstractController
 {
-    public function like($articleId)
+    public function like(int $articleId)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $articleManager = new ArticleManager();
