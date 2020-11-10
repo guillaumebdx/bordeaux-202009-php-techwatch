@@ -10,7 +10,7 @@ class ArticleManager extends AbstractManager
      *
      */
     const TABLE = 'article';
-    const CARD_NUMBER = 30;
+    const CAROUSEL_CARD_NUMBER = 20;
 
     /**
      *  Initializes this class.
@@ -22,19 +22,11 @@ class ArticleManager extends AbstractManager
 
     public function getArticleOfWeek(): array
     {
-        $bestArticleQuery = "SELECT week(created_at) FROM article ORDER BY star DESC LIMIT 1";
-        $lastBestArticle = $this->pdo->query($bestArticleQuery)->fetch();
-        $curdate = $this->pdo->query("SELECT week(curdate())")->fetch();
-        if ($lastBestArticle === $curdate) {
-            $query = "SELECT * FROM article WHERE week(created_at)=week(curdate()) ORDER BY star DESC LIMIT 1";
-            $statement = $this->pdo->query($query)->fetch();
-        } else {
-            $query = "SELECT * FROM article WHERE week(created_at)=week(curdate())-1 ORDER BY star DESC LIMIT 1";
-            $statement = $this->pdo->query($query)->fetch();
-        }
+        $query = "SELECT * FROM article ORDER BY week(created_at) DESC, star DESC LIMIT 1";
+        $statement = $this->pdo->query($query)->fetch();
         return $statement;
     }
-    public function addLike($articleId):void
+    public function addLike(int $articleId):void
     {
         $query = "UPDATE " . self::TABLE . " SET star = star + 1 WHERE id=:id";
         $statement = $this->pdo->prepare($query);
@@ -47,7 +39,8 @@ class ArticleManager extends AbstractManager
         {
             $query = "SELECT * FROM article 
                         JOIN user ON user.id = article.user_id 
-                        ORDER BY " . $what . " LIMIT " . self::CARD_NUMBER;
+                        ORDER BY " . $what . " LIMIT " . self::CAROUSEL_CARD_NUMBER;
+
             return $this->pdo->query($query)->fetchAll();
         }
     }
