@@ -6,6 +6,9 @@ namespace App\Controller;
 
 
 use App\Model\UserManager;
+use App\Service\FormValidator;
+use App\Service\LoginValidator;
+use App\Service\RegisterValidator;
 
 class UserController extends AbstractController
 {
@@ -18,19 +21,20 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
-            $allUsers = $userManager->selectAllUsername();
-            if (in_array($_POST['username'], $allUsers)) {
-                $_SESSION['errors']['usernameExist'] = 'this username already exist';
-                header('Location: /user/register');
-            } else {
-                $userData = [];
-                $userData['username'] = $_POST['username'];
-                $userData['firstname'] = $_POST['firstname'];
-                $userData['lastname'] = $_POST['lastname'];
+            $registerValidator = new RegisterValidator($_POST);
+            $registerValidator->checkFields();
+            $errors = $registerValidator->getErrors();
+            $userData = $_POST;
+            if (empty($errors)) {
                 $userData['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $userManager->insertUser($userData);
+                $_SESSION['user'] = $userData;
                 header('Location: /');
             }
+            return $this->twig->render('techwatch_item/form_register.html.twig', [
+                'errors' => $errors,
+                'userData' => $userData,
+            ]);
         } else {
             echo 'méthode interdite';
         }
@@ -44,14 +48,18 @@ class UserController extends AbstractController
     public function check()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $userManager = new UserManager();
-            $userData = $userManager->selectOneByUsername($_POST['username']);
-            if (password_verify($_POST['password'], $userData['password'])) {
+            $loginValidator = new LoginValidator($_POST);
+            $loginValidator->checkFields();
+            $errors = $loginValidator->getErrors();
+            $userData = $_POST;
+            if (empty($errors)) {
                 $_SESSION['user'] = $userData;
                 header('Location: /');
-            } else {
-                header('Location: /user/login');
             }
+            return $this->twig->render('techwatch_item/form_login.html.twig', [
+                'errors' => $errors,
+                'userData' => $userData,
+            ]);
         } else {
             echo 'méthode interdite';
         }

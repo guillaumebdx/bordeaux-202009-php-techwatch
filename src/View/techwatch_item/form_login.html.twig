@@ -11,27 +11,33 @@
             <img src="/assets/images/computer.svg">
         </div>
         <div class="login-content">
-            <form action="/user/check" method="post">
-
-                <img src="/assets/images/avatar.svg">
-
-                <h2 class="title">Identification</h2>
-                <div class="input-div user">
-                    <div class="i">
-                        <i class="fa fa-user-o" aria-hidden="true"></i>
+            <form action="/user/check" method="post" class="login-form">
+                <div>
+                    <img src="/assets/images/avatar.svg">
+                    <h2 class="title">Identification</h2>
+                    <div class="input-div user {% if userData.username %}{{ 'focus' }}{% endif %}">
+                        <div class="i">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Username</h5>
+                            <input type="text" name="username" class="input is-invalid" {% if userData.username %} value="{{ userData.username }}" {% endif %}>
+                            <div class="invalid-feedback">
+                                {{errors.username}}
+                            </div>
+                        </div>
                     </div>
-                    <div class="div">
-                        <h5>Username</h5>
-                        <input type="text" name="username" class="input">
-                    </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Password</h5>
-                        <input type="password" name="password" class="input">
+                    <div class="input-div pass {% if userData.password %}{{ 'focus' }}{% endif %}">
+                        <div class="i">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Password</h5>
+                            <input type="password" name="password" class="input is-invalid" {% if userData.password %} value="{{ userData.password }}" {% endif %}>
+                            <div class="invalid-feedback">
+                                {{errors.password}}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <input type="submit" class="btn-check" value="Login">

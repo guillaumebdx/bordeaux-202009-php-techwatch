@@ -37,24 +37,4 @@ class UserManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
-
-    public function selectOneByUsername(string $username): array
-    {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE username=:username");
-        $statement->bindValue(':username', $username, \PDO::PARAM_STR);
-        $statement->execute();
-
-        return $statement->fetch();
-    }
-
-    public function selectAllUsername(): array
-    {
-        $query = 'SELECT username FROM ' . self::TABLE;
-        $allUsernames = $this->pdo->query($query);
-        $usernames = [];
-        foreach ($allUsernames as $usernameData) {
-            $usernames[] = $usernameData['username'];
-        }
-        return $usernames;
-    }
 }
