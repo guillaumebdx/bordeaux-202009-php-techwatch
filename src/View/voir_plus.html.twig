@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class ="voir-plus">
+        <div class="voir-plus-content">
+            <a href="{{ voir_plus.article_url }}">
+                <img src="{{ voir_plus.image_url }}" class="card-img-top article-picture voir-plus-picture" alt="image correspondant à l'article">
+                <p class="card-title">{{ voir_plus.title }}</p>
+            </a>
+        </div>
+        <div class="voir-plus-content">
+            <p class="voir-plus-text">{{ voir_plus.description }}</p>
+        </div>
+        <div class="voir-plus-content">
+            <p class="voir-plus-text">{{ voir_plus.username }} a ajouté cette veille le {{ voir_plus.created_at }}</p>
+        </div>
+        <div class="voir-plus-content">
+            <h2 class="title-articles-pages">Derniers commentaires publiés</h2>
+        </div>
+        <div class="voir-plus-content">
+            <p class="voir-plus-text">"Nom utilisateur" a publié ce message</p>
+            <section class="voir-plus-text">{{ voir_plus.message }}</section>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1"></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici"></textarea>
+        </div>
+        <button type="submit" class="btn btn-voir-plus">Publier</button>
+    </div>
+{% endblock %}

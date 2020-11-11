@@ -4,15 +4,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="../Home/index">Techwatch</a>
+            <a class="navbar-brand" href="/Home/index">Techwatch</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../Home/articlesByDate">Actualités<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../Article/articlesByDate">Actualités<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="../Home/articlesByTrend">Tendances</a>
+                    <a class="nav-link" href="../Article/articlesByTrend">Tendances</a>
                 </li> <li class="nav-item active">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="../Contact/contactForm">Contact</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -30,14 +30,14 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Mon profil</a>
                 <a class="dropdown-item" href="#">Bibliothèque</a>
-                <a class="dropdown-item" href="#">créer une veille</a>
+                <a class="dropdown-item" href="#">Créer une veille</a>
                 <a class="dropdown-item" href="/user/logout">Déconnexion</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Paramètres</a>
             </div>
             {% else %}
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/user/login">connection</a>
+                    <a class="dropdown-item" href="/user/login">Connection</a>
                     <a class="dropdown-item" href="/user/register">S'inscrire</a>
                 </div>
             {% endif %}
