@@ -269,7 +269,6 @@ footer {
 .cards-box {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     flex-wrap: wrap;
 }
 /* carousel home page end */
@@ -413,7 +412,7 @@ a:-webkit-any-link:hover{
 }
 
 .fa {
-    font-family: 'FontAwesome';
+    font-family: FontAwesome;
 }
 
 .container{
