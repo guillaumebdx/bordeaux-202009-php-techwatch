@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Tech Watch!</h1>
     {% include 'techwatch_item/_article_of_week.html.twig' %}
+    {{ dump(search_data) }}
     <div>
         <h2 class="title-articles-pages">Articles aléatoires</h2>
         {% set articles = article_random %}

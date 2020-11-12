@@ -37,13 +37,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    public function voirPlus($articleId)
+    public function voirPlus($id)
     {
         $plusSection = new ArticleManager();
-        $plus = $plusSection->getArticleById($articleId);
+        $plus = $plusSection->getArticleById($id);
+        $plusComment = $plusSection->getCommentData($id);
 
             return $this->twig->render('voir_plus.html.twig', [
                 'voir_plus' => $plus,
+                'comment_data' => $plusComment,
             ]);
     }
 }

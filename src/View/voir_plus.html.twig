@@ -16,9 +16,18 @@
         </div>
         <div class="voir-plus-content">
             <h2 class="title-articles-pages">Derniers commentaires publiés</h2>
+            {% if comment_data %}
+            <p class="voir-plus-text">{{ comment_data.message }}</p>
+                {% else %}
+                    Pas de commentaires pour le moment
+            {% endif %}
         </div>
         <div class="voir-plus-content">
-            <p class="voir-plus-text">"Nom utilisateur" a publié ce message</p>
+            {% if comment_data %}
+            <p class="voir-plus-text"> {{ comment_data.username}} a publié ce message</p>
+                {% else %}
+                Sois le premier à commenter
+            {% endif %}
             <section class="voir-plus-text">{{ voir_plus.message }}</section>
         </div>
         <div class="form-group">
