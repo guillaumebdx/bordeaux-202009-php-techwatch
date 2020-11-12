@@ -45,7 +45,7 @@ class ArticleManager extends AbstractManager
             return $this->pdo->query($query)->fetchAll();
     }
 
-    public function getArticleById($articleId)
+    public function getArticleById(int $id)
     {
         $query =   "SELECT a.id AS article_id, a.title, a.article_url, a.image_url, a.description, 
                     a.created_at, a.star, 
@@ -56,8 +56,37 @@ class ArticleManager extends AbstractManager
                     WHERE a.id =:id";
 
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('id', $articleId, \PDO::PARAM_INT);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetch();
+    }
+
+    public function getCommentData(int $id)
+    {
+        $query = "SELECT u.id AS user_id, u.username, c.id AS comment_id, 
+                    c.message, a.id AS article_id
+                    FROM user u
+                    JOIN comment c
+                    ON u.id = c.user_id
+                    JOIN article a 
+                    ON a.id = c.article_id
+                    WHERE a.id =:id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    public function searchBar($word): array
+    {
+        $query = 'SELECT title, article_url
+                    FROM article 
+                    WHERE title LIKE :word;';
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':word', '%' . $word . '%', \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

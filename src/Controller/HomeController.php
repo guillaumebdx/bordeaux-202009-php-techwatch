@@ -30,11 +30,20 @@ class HomeController extends AbstractController
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
         $articleOfWeek = $articleManager->getArticleOfWeek();
 
+        $search = $articleManager->searchBar('');
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['search']) and !empty($_POST['search'])) {
+                $search = $articleManager->searchBar(trim($_POST['search']));
+            }
+        }
+
         $twigs = [
             'article_of_week' => $articleOfWeek,
             'article_random' => $articleRandom,
             'article_trend' => $articleTrend,
             'article_date' => $articleDate,
+            'search_data' => $search,
         ];
 
         return $this->twig->render('Home/index.html.twig', $twigs);
