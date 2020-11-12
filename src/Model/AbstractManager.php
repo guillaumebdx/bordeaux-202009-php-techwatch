@@ -67,4 +67,13 @@ abstract class AbstractManager
 
         return $statement->fetch();
     }
+
+    public function selectOneBy(string $column, string $post)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . $this->table . " WHERE " . $column . "=:" . $post);
+        $statement->bindValue(':' . $post, $post, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

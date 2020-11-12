@@ -384,8 +384,24 @@ a:-webkit-any-link:hover{
 /* card home page display end*/
 
 /* front form start*/
+.invalid-feedback {
+    font-size: 100%;
+}
+
 .register-form{
     width: 360px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-form {
+    width: 360px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .fond{
@@ -509,7 +525,7 @@ a:-webkit-any-link:hover{
 }
 
 .input-div > div > input{
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 100%;
@@ -542,8 +558,7 @@ a:-webkit-any-link:hover{
     color: var(--font-color);
     font-family: var(--primary-font);
     text-transform: uppercase;
-    margin: 1rem 0;
-    cursor: pointer;
+    margin: 2rem 0;
     transition: .5s;
 }
 .btn-check:hover{
