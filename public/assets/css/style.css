@@ -607,29 +607,10 @@ a:-webkit-any-link:hover{
 /* front form end*/
 
 /* media queries - carousel - page accueil - affichage articles aléatoires only start */
-@media screen and (min-width: 601px){
-
-  #random-view-mobile{
-      display: none;
-  }
-}
-
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1360px){
 
     #random-view-movile {
         visibility: visible;
-    }
-
-    #carouselArticleRandom{
-        display: none;
-    }
-
-    #carouselArticleByDate{
-        display: none;
-    }
-
-    #carouselArticleByTrend{
-        display: none;
     }
 
     .title-articles-homepage-random{
