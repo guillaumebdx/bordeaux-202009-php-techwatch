@@ -1,3 +1,6 @@
 parameters:
 	ignoreErrors:
 		- '#Constant [A-Z_]+ not found.#'
+		-
+		    message: '#[.*]#'
+		    path: src/Controller/UserController.php
