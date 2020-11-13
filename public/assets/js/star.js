@@ -1,4 +1,4 @@
-const stars = document.getElementsByClassName('fa-star');
+const stars = document.getElementsByClassName('fa-star-o');
 for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener('click', (event) => {
         fetch('/star/add', {
@@ -13,6 +13,5 @@ for (let i = 0; i < stars.length; i++) {
             })
         })
             .then(response => response.json())
-            .then(data => stars[i].classList.toggle('-o', false))
     })
 }
