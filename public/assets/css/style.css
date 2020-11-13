@@ -310,7 +310,7 @@ a:-webkit-any-link:hover{
     text-decoration: none;
 }
 
-.btn-primary{
+.card-article .btn-primary{
     visibility: hidden;
     background-color: var(--secondary-color);
     color: var(--font-color);
