@@ -15,7 +15,7 @@
                 <div>
                     <img src="/assets/images/avatar.svg">
                     <h2 class="title">Inscription</h2>
-                    <div  class="input-div user {% if userData.username %}{{ 'focus' }}{% endif %}">
+                    <div  class="input-div user {{ userData.username ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-div firstname {% if userData.firstname %}{{ 'focus' }}{% endif %}">
+                    <div class="input-div firstname {{ userData.firstname ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-div Lastname {% if userData.lastname %}{{ 'focus' }}{% endif %}">
+                    <div class="input-div Lastname {{ userData.lastname ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="input-div pass {% if userData.password %}{{ 'focus' }}{% endif %}">
+                    <div class="input-div pass {{ userData.password ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </div>
