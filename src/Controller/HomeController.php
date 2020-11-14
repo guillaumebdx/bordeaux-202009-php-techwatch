@@ -26,6 +26,7 @@ class HomeController extends AbstractController
     {
         $articleManager = new ArticleManager();
 
+        $allArticleRandom = $articleManager->getAllArticleOrderBy("RAND()");
         $articleRandom = $articleManager->getArticleOrderBy("RAND()");
         $articleTrend = $articleManager->getArticleOrderBy('star DESC');
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
@@ -33,31 +34,12 @@ class HomeController extends AbstractController
 
         $twigs = [
             'article_of_week' => $articleOfWeek,
+            'all_article_random' => $allArticleRandom,
             'article_random' => $articleRandom,
             'article_trend' => $articleTrend,
             'article_date' => $articleDate,
         ];
 
         return $this->twig->render('Home/index.html.twig', $twigs);
-    }
-
-    public function articlesByDate()
-    {
-        $articleManagerByDate = new ArticleManager();
-
-        $articleViewByDate = $articleManagerByDate->getArticleOrderBy('created_at DESC');
-        return $this->twig->render('articles_by_date.html.twig', [
-            'article_date_view' => $articleViewByDate,
-        ]);
-    }
-
-    public function articlesByTrend()
-    {
-        $articleManagerTrend = new ArticleManager();
-
-        $articleViewByTrend = $articleManagerTrend->getArticleOrderBy('star DESC');
-        return $this->twig->render('articles_by_trend.html.twig', [
-            'article_trend_view' => $articleViewByTrend,
-        ]);
     }
 }

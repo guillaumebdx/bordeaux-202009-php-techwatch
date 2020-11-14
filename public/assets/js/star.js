@@ -1,4 +1,4 @@
-const stars = document.getElementsByClassName('fa-star-o');
+const stars = document.getElementsByClassName('star');
 for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener('click', (event) => {
         fetch('/star/add', {
@@ -8,10 +8,12 @@ for (let i = 0; i < stars.length; i++) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'cheatsheet': event.target.dataset.id,
-                'userid': 4,
+                'articleid': event.target.dataset.articleid,
+                'userid': event.target.dataset.userid,
+                'starcount': event.target.dataset.starcount,
             })
         })
             .then(response => response.json())
+            .then(data => console.log(data))
     })
 }

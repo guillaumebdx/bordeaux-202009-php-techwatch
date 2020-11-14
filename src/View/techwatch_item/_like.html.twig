@@ -1,3 +1,5 @@
 <div class="icon">
-    <i class="fa fa-star-o" aria-hidden="true" data-id="{{  article.article_id }}"> {{  article.star }}</i>
+    <button type="button" class="btn btn-primary btn-lg star">
+        <i class="fa fa-star-o" aria-hidden="true" data-articleid="{{  article.article_id }}" data-userid="{{ article.user_id }}" data-starcount="{{ article.star }}"> {{  article.star }}</i>
+    </button>
 </div>

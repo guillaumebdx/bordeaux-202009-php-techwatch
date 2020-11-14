@@ -12,14 +12,17 @@ class StarController
     {
         $json = file_get_contents('php://input');
         $jsonData = json_decode($json, true);
-        $articleId = $jsonData['cheatsheet'];
+        $articleId = $jsonData['articleid'];
         $userId = $jsonData['userid'];
+        $starCount = $jsonData['starcount'];
         $articleManager = new ArticleManager();
         $articleManager->addLike($articleId);
+        $articleManager->selectOneById($articleId);
         $response = [
             'status' => 'success',
             'user' => $userId,
-            'cheat' => $articleId,
+            'article' => $articleId,
+            'starcount' => $starCount + 1,
         ];
         return json_encode($response);
     }

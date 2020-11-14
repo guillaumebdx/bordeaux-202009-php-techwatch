@@ -1,24 +1,24 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {% include 'techwatch_item/_article_of_week.html.twig' %}
-    <div>
+    <div class="article_of_week">
+        {% include 'techwatch_item/_article_of_week.html.twig' %}
+    </div>
+    <div class="mobile-view">
+        {% include 'techwatch_item/_articles_random.html.twig' %}
+    </div>
+    <div class="carousel-box">
         <h2 class="titre-affichage-articles-accueil">Articles aléatoires</h2>
         {% set articles = article_random %}
         {% set id = 'article_random' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
-    </div>
-    <div id="date-articles">
         <h2 class="titre-affichage-articles-accueil">Derniers articles publiés</h2>
         {% set articles = article_date %}
         {% set id = 'article_date' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
-    </div>
-    <div id="trend-articles">
-    <h2 class="titre-affichage-articles-accueil">Les mieux notés</h2>
+        <h2 class="titre-affichage-articles-accueil">Les mieux notés</h2>
         {% set articles = article_trend %}
         {% set id = 'article_trend' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
     </div>
-
 {% endblock %}
