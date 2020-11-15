@@ -21,11 +21,9 @@ class FormValidator
     public function checkFields()
     {
         foreach ($this->fields as $fieldType => $value) {
+            $value = trim($value);
             if (empty($value)) {
                 $this->addError($fieldType, 'Ce champ doit être rempli.');
-            }
-            if (strlen($value) > 50) {
-                $this->addError($fieldType, 'Ce champ est trop long');
             }
         }
     }
@@ -34,7 +32,7 @@ class FormValidator
     {
         $check = $this->userManager->selectOneBy('username', $this->fields['username']);
         $result = false;
-        if (!is_bool($check)) {
+        if ($check) {
             $result = true;
         }
         return $result;

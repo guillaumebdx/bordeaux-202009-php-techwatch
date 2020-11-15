@@ -25,6 +25,7 @@ class HomeController extends AbstractController
     {
         $articleManager = new ArticleManager();
 
+        $allArticleRandom = $articleManager->getAllArticleOrderBy("RAND()");
         $articleRandom = $articleManager->getArticleOrderBy("RAND()");
         $articleTrend = $articleManager->getArticleOrderBy('star DESC');
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
@@ -40,6 +41,7 @@ class HomeController extends AbstractController
 
         $twigs = [
             'article_of_week' => $articleOfWeek,
+            'all_article_random' => $allArticleRandom,
             'article_random' => $articleRandom,
             'article_trend' => $articleTrend,
             'article_date' => $articleDate,
