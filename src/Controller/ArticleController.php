@@ -16,4 +16,36 @@ class ArticleController extends AbstractController
             header('Location: /');
         }
     }
+
+    public function articlesByDate()
+    {
+        $articleManagerByDate = new ArticleManager();
+
+        $articleViewByDate = $articleManagerByDate->getArticleOrderBy('created_at DESC');
+        return $this->twig->render('articles_by_date.html.twig', [
+            'article_date_view' => $articleViewByDate,
+        ]);
+    }
+
+    public function articlesByTrend()
+    {
+        $articleManagerTrend = new ArticleManager();
+
+        $articleViewByTrend = $articleManagerTrend->getArticleOrderBy('star DESC');
+        return $this->twig->render('articles_by_trend.html.twig', [
+            'article_trend_view' => $articleViewByTrend,
+        ]);
+    }
+
+    public function voirPlus($id)
+    {
+        $plusSection = new ArticleManager();
+        $plus = $plusSection->getArticleById($id);
+        $plusComment = $plusSection->getCommentData($id);
+
+            return $this->twig->render('voir_plus.html.twig', [
+                'voir_plus' => $plus,
+                'comment_data' => $plusComment,
+            ]);
+    }
 }

@@ -12,11 +12,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/trends/articlesByTrend">Tendances</a>
                 </li> <li class="nav-item active">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="/Contact/contactForm">Contact</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Chercher une veille" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="../Home/index">
+                <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Chercher une veille" aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
             </form>
         </div>
@@ -30,14 +30,14 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Mon profil</a>
                 <a class="dropdown-item" href="#">Bibliothèque</a>
-                <a class="dropdown-item" href="#">créer une veille</a>
+                <a class="dropdown-item" href="#">Créer une veille</a>
                 <a class="dropdown-item" href="/user/logout">Déconnexion</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Paramètres</a>
             </div>
             {% else %}
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/user/login">connection</a>
+                    <a class="dropdown-item" href="/user/login">Connection</a>
                     <a class="dropdown-item" href="/user/register">S'inscrire</a>
                 </div>
             {% endif %}

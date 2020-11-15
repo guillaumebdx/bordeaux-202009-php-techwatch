@@ -662,3 +662,91 @@ a:-webkit-any-link:hover{
 }
 
 /* articles by date page end */
+
+/* form contact - start */
+
+.form-contact{
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.form-text{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+}
+
+.title-form{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    margin-left: 5em;
+    margin-top: 3em;
+}
+
+.btn-form-contact{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    border-color: var(--titles-color);
+    margin-bottom: 3em;
+}
+
+.form-text-information{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 3em;
+    margin-top: 3em;
+}
+
+/* form contact - end */
+
+/* voir-plus section - start */
+
+.voir-plus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 10px solid var(--card-color);
+    margin: 5em auto;
+    width: 50em;
+    height: fit-content;
+    padding: 2em;
+    text-align: center;
+}
+
+.voir-plus-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+}
+
+.voir-plus-picture{
+    width: 30em;
+    margin-bottom: 2em;
+}
+
+.voir-plus-text{
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    font-style: italic;
+}
+
+@media screen and (max-width: 600px){
+    .voir-plus{
+        width: 100%;
+    }
+    .voir-plus-picture{
+        width: 10em;
+    }
+}
+
+/* voir-plus section - end */
+
