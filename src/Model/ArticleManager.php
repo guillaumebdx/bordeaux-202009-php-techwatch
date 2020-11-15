@@ -26,12 +26,13 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->query($query)->fetch();
         return $statement;
     }
-    public function addLike(int $articleId):void
+    public function addLike(int $articleId)
     {
         $query = "UPDATE " . self::TABLE . " SET star = star + 1 WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
+        return $this->selectOneById($articleId);
     }
 
     public function getArticleOrderBy(string $field): array
