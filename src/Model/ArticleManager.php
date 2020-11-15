@@ -61,6 +61,7 @@ class ArticleManager extends AbstractManager
                         ORDER BY " . $field;
 
             return $this->pdo->query($query)->fetchAll();
+        }
     }
 
     public function getArticleById(int $id)
