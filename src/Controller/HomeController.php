@@ -30,11 +30,16 @@ class HomeController extends AbstractController
         $articleDate = $articleManager->getArticleOrderBy('created_at DESC');
         $articleOfWeek = $articleManager->getArticleOfWeek();
 
-        $search = $articleManager->searchBar('');
+        $search = [];
+        $error = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['search']) and !empty($_POST['search'])) {
-                $search = $articleManager->searchBar(trim($_POST['search']));
+            if (isset($_POST['search']) && !empty($_POST['search'])) {
+                $_POST['search'] = htmlspecialchars(trim($_POST['search']));
+                $search = $articleManager->searchBar($_POST['search']);
+            }
+            if (isset($_POST['search']) && empty($search)) {
+                $error = ['Pas de résultats pour la recherche contenant le mot clé : ' .  $_POST['search']];
             }
         }
 
@@ -44,6 +49,7 @@ class HomeController extends AbstractController
             'article_trend' => $articleTrend,
             'article_date' => $articleDate,
             'search_data' => $search,
+            'search_error' => $error,
         ];
 
         return $this->twig->render('Home/index.html.twig', $twigs);

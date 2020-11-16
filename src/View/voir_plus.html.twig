@@ -3,37 +3,31 @@
 {% block content %}
     <div class ="voir-plus">
         <div class="voir-plus-content">
-            <a href="{{ voir_plus.article_url }}">
-                <img src="{{ voir_plus.image_url }}" class="card-img-top article-picture voir-plus-picture" alt="image correspondant à l'article">
-                <p class="card-title">{{ voir_plus.title }}</p>
+            <a href="{{ article_data.article_url }}">
+                <img src="{{ article_data.image_url }}" class="card-img-top article-picture voir-plus-picture" alt="image correspondant à l'article">
+                <p class="card-title">{{ article_data.title }}</p>
             </a>
         </div>
         <div class="voir-plus-content">
-            <p class="voir-plus-text">{{ voir_plus.description }}</p>
+            <p class="voir-plus-text">{{ article_data.description }}</p>
         </div>
         <div class="voir-plus-content">
-            <p class="voir-plus-text">{{ voir_plus.username }} a ajouté cette veille le {{ voir_plus.created_at }}</p>
-        </div>
-        <div class="voir-plus-content">
-            <h2 class="title-articles-pages">Derniers commentaires publiés</h2>
-            {% if comment_data %}
-            <p class="voir-plus-text">{{ comment_data.message }}</p>
-                {% else %}
-                    Pas de commentaires pour le moment
-            {% endif %}
-        </div>
-        <div class="voir-plus-content">
-            {% if comment_data %}
-            <p class="voir-plus-text"> {{ comment_data.username}} a publié ce message</p>
-                {% else %}
-                Sois le premier à commenter
-            {% endif %}
-            <section class="voir-plus-text">{{ voir_plus.message }}</section>
+            <p class="voir-plus-text">{{ article_data.username }} a ajouté cette veille le {{ article_data.created_at }}</p>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1"></label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici"></textarea>
         </div>
         <button type="submit" class="btn btn-voir-plus">Publier</button>
+        <div class="voir-plus-content">
+            <h2 class="title-articles-pages">Derniers commentaires publiés</h2>
+            {% if comment_data is not empty %}
+                {% for comment in comment_data %}
+                    <p class="voir-plus-text">{{ comment.message }} - {{ comment.username}} a publié ce message</p>
+                    {% endfor %}
+            {% else %}
+                <p class="voir-plus-text">Pas de commentaires pour le moment, sois le premier à commenter !</p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}

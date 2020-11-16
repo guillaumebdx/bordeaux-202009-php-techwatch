@@ -3,7 +3,21 @@
 {% block content %}
     <h1>Tech Watch!</h1>
     {% include 'techwatch_item/_article_of_week.html.twig' %}
-    {{ dump(search_data) }}
+    <ul  class="search-info-list">
+        {% if search_data is not empty %}
+            <h2 class="title-articles-pages"> Articles correspondant à la recherche : </h2>
+    {% for title in search_data %}
+        <a href="{{ title.article_url }}">
+        <li class="search-info-items"> {{ title.title }} </li>
+        </a>
+    {% endfor %}
+        {% endif %}
+    </ul>
+
+    {% if search_error is not empty %}
+        <h2 class="title-articles-pages">{{search_error.0}}</h2>
+    {% endif %}
+
     <div>
         <h2 class="title-articles-pages">Articles aléatoires</h2>
         {% set articles = article_random %}
@@ -22,5 +36,4 @@
         {% set id = 'article_trend' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
     </div>
-
 {% endblock %}

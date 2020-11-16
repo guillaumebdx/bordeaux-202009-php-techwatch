@@ -726,6 +726,7 @@ a:-webkit-any-link:hover{
     flex-direction: column;
     align-items: center;
     border: 10px solid var(--card-color);
+    border-radius: 5%;
     margin: 5em auto;
     width: 50em;
     height: fit-content;
@@ -763,4 +764,18 @@ a:-webkit-any-link:hover{
 }
 
 /* voir-plus section - end */
+
+/* search display home page - start */
+.search-info-list{
+    margin-top: -8em;
+}
+
+.search-info-items{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    margin: 2em 2em 2em 5em;
+}
+
+/* search display home page - end */
+
 
