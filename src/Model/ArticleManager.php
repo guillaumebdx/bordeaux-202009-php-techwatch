@@ -108,4 +108,24 @@ class ArticleManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function insertWatch(array $article): array
+    {
+        $query = "INSERT INTO " . self::TABLE . "(title,̀description,image_url,article_url)
+         VALUES (:title, :description, :image_url, :article_url)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('title', $article['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $article['description'], \PDO::PARAM_STR);
+        $statement->bindValue('image_url', $article['image_url'], \PDO::PARAM_STR);
+        $statement->bindValue('article_url', $article['article_url'], \PDO::PARAM_STR);
+        $statement->execute();
+        return $this->showWatch();
+    }
+    public function showWatch() :array
+    {
+        $query = "SELECT image_url FROM article
+                   WHERE id = :id ";
+        $statement = $this->pdo->query($query)->fetch();
+        return $statement;
+    }
 }
