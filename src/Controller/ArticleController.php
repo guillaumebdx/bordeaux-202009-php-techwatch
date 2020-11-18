@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Model\ArticleManager;
+use DateTime;
 
 class ArticleController extends AbstractController
 {
@@ -40,9 +41,9 @@ class ArticleController extends AbstractController
     public function addCommentUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $articleManager = new ArticleManager();
-                $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
-                header("Location: /Article/getComment/" . $_POST['articleId']);
+            $articleManager = new ArticleManager();
+            $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
+            header("Location: /Article/getComment/" . $_POST['articleId']);
         }
     }
 
@@ -59,8 +60,29 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    public function createArticle()
+    public function articleForm()
     {
-        return $this->twig->render('techwatch_item/create_article.html.twig');
+        $presentTime = new DateTime();
+        $format = date_format($presentTime, "Y-m-d H:i:s");
+        return $this->twig->render('techwatch_item/create_article.html.twig', [
+        'date_time' => $format,
+        ]);
+    }
+
+    public function addWatch()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'];
+            $picture = $_POST['picture'];
+            $link = $_POST['link'];
+            $description = $_POST['description'];
+            $userId = $_POST['userId'];
+            $dateTime = $_POST['dateTime'];
+
+            $articleManager = new ArticleManager();
+            $articleManager->addArticle($title, $link, $picture, $description, $dateTime, $userId);
+
+            header("Location: /news/articlesByDate/");
+        }
     }
 }

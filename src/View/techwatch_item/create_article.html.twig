@@ -1,21 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Créer ta veille
+    Crée ta veille
 {% endblock %}
 
 {% block content %}
     <img class="fond" src="/assets/images/fond.png">
     <div class="container">
         <div class="login-content">
-            <form action="/user/addUser" method="post" class="register-form">
+            <form action="/article/addWatch" method="post" class="add-article">
                 <div>
-                    <h2 class="title">Créer ta veille</h2>
+                    <h2 class="title">Crée ta veille</h2>
                     <div  class="input-div title {{ userData.title ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
                         <div class="div">
+                            <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
+                            <input id="dateTime" name="dateTime" type="hidden" value="{{ date_time }}">
                             <h5>Titre</h5>
                             <input type="text" name="title" class="input is-invalid" {% if userData.username %} value="{{ userData.username }}" {% endif %}>
                             <div class="invalid-feedback">
@@ -24,18 +26,6 @@
                         </div>
                     </div>
                     <div class="input-div keyword {{ userData.keyword ? 'focus' }}">
-                        <div class="i">
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="div">
-                            <h5>Mots-clés</h5>
-                            <input type="text" name="keyword" class="input is-invalid" {% if userData.firstname %} value="{{ userData.firstname }}" {% endif %}>
-                            <div class="invalid-feedback">
-                                {{errors.keyword}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-div link {{ userData.link ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
@@ -60,14 +50,13 @@
                         </div>
                     </div>
                     <div class="description">
-                        <h5>Description</h5>
-                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                        <textarea name="description" id="description" cols="50" rows="5" placeholder="Description de l'article"></textarea>
                         <div class="invalid-feedback">
                             {{errors.description}}
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn-check" value="Login">
+                <input type="submit" class="btn-check" value="Valider">
             </form>
         </div>
     </div>
