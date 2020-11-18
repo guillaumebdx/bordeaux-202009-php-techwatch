@@ -78,7 +78,7 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $userData = $userManager->getUserById($_SESSION['user']['id']);
-        return $this->twig->render('profile.html.twig', [
+        return $this->twig->render('techwatch_item/profile_page.html.twig', [
             'user_data' => $userData,
         ]);
     }
