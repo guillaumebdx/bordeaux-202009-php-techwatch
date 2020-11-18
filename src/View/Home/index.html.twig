@@ -20,5 +20,8 @@
         {% set id = 'article_date' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
         <h2 class="title-articles-pages">Les mieux notés</h2>
+        {% set articles = article_trend %}
+        {% set id = 'article_trend' %}
+        {% include 'techwatch_item/_carousel.html.twig' %}
     </div>
 {% endblock %}
