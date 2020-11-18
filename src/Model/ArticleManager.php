@@ -80,21 +80,30 @@ class ArticleManager extends AbstractManager
         return $statement->fetch();
     }
 
+    public function addComment($userId, $articleId, $message)
+    {
+        $query = "INSERT INTO comment (`user_id`, `article_id`, `message`) 
+                    VALUES (:userId, :articleId, :message)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('userId', $userId, \PDO::PARAM_STR);
+        $statement->bindValue('articleId', $articleId, \PDO::PARAM_STR);
+        $statement->bindValue('message', $message, \PDO::PARAM_STR);
+        $statement->execute();
+    }
+
     public function getCommentData(int $id)
     {
-        $query = "SELECT u.id AS user_id, u.username, c.id AS comment_id, 
-                    c.message, a.id AS article_id
+        $query = "SELECT u.id AS user_id, u.username, c.id AS comment_id, c.article_id,
+                    c.message
                     FROM user u
                     JOIN comment c
                     ON u.id = c.user_id
-                    JOIN article a 
-                    ON a.id = c.article_id
-                    WHERE a.id =:id";
+                    WHERE c.article_id =:id";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetch();
+        return $statement->fetchAll();
     }
 
     public function searchBar($word): array
@@ -106,7 +115,7 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':word', '%' . $word . '%', \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $statement->fetchAll();
     }
 
     public function insertWatch(array $article): array

@@ -27,8 +27,9 @@ class UserController extends AbstractController
             $userData = $_POST;
             if (empty($errors)) {
                 $userData['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $userManager->insertUser($userData);
+                $userId = $userManager->insertUser($userData);
                 $_SESSION['user'] = $userData;
+                $_SESSION['user']['id'] = $userId;
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_register.html.twig', [
@@ -54,6 +55,7 @@ class UserController extends AbstractController
             $userData = $_POST;
             if (empty($errors)) {
                 $_SESSION['user'] = $userData;
+                $_SESSION['user']['id'] = $loginValidator->getUserId();
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_login.html.twig', [

@@ -28,6 +28,12 @@ class FormValidator
         }
     }
 
+    public function getUserId()
+    {
+        $userData = $this->userManager->selectOneBy('username', $this->fields['username']);
+        return $userData['id'];
+    }
+
     public function isUsernameValid(): bool
     {
         $check = $this->userManager->selectOneBy('username', $this->fields['username']);

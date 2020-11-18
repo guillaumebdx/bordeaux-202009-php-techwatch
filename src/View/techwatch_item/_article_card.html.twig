@@ -4,7 +4,7 @@
                 <img src="{{ article.image_url }}" class="card-img-top article-picture" alt="image correspondant à l'article">
                 {% include 'techwatch_item/_slice_title.html.twig' %}
             </a>
-            <a href="../Article/voirPlus/{{ article.article_id }}" class="card-info-plus">Voir plus</a>
+            <a href="article/getComment/{{ article.article_id }}" class="card-info-plus">Voir plus</a>
         </div>
     {% include 'techwatch_item/_card_buttons.html.twig' %}
 </div>
