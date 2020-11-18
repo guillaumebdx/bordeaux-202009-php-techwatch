@@ -1,36 +1,37 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Tech Watch!</h1>
-    {% include 'techwatch_item/_article_of_week.html.twig' %}
+<div class="article_of_week">
     <ul  class="search-info-list">
         {% if search_data is not empty %}
             <h2 class="title-articles-pages"> Articles correspondant à la recherche : </h2>
-    {% for title in search_data %}
-        <a href="{{ title.article_url }}">
-        <li class="search-info-items"> {{ title.title }} </li>
-        </a>
-    {% endfor %}
+            {% for title in search_data %}
+                <a href="{{ title.article_url }}">
+                    <li class="search-info-items"> {{ title.title }} </li>
+                </a>
+            {% endfor %}
         {% endif %}
     </ul>
-
+</div>
     {% if search_error is not empty %}
         <h2 class="title-articles-pages">{{search_error.0}}</h2>
     {% endif %}
 
-    <div>
+    <div class="article_of_week">
+        {% include 'techwatch_item/_article_of_week.html.twig' %}
+    </div>
+    <div class="mobile-view">
+        {% include 'techwatch_item/_articles_random.html.twig' %}
+    </div>
+    <div class="carousel-box">
         <h2 class="title-articles-pages">Articles aléatoires</h2>
         {% set articles = article_random %}
         {% set id = 'article_random' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
-    </div>
-    <div id="date-articles">
         <h2 class="title-articles-pages">Derniers articles publiés</h2>
         {% set articles = article_date %}
         {% set id = 'article_date' %}
         {% include 'techwatch_item/_carousel.html.twig' %}
-    </div>
-    <div id="trend-articles">
         <h2 class="title-articles-pages">Les mieux notés</h2>
         {% set articles = article_trend %}
         {% set id = 'article_trend' %}

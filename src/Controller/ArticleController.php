@@ -53,9 +53,14 @@ class ArticleController extends AbstractController
         $articleData = $articleAndComment->getArticleById($id);
         $commentData = $articleAndComment->getCommentData($id);
 
-            return $this->twig->render('voir_plus.html.twig', [
-                'article_data' => $articleData,
-                'comment_data' => $commentData,
-            ]);
+        return $this->twig->render('voir_plus.html.twig', [
+            'article_data' => $articleData,
+            'comment_data' => $commentData,
+        ]);
+    }
+
+    public function createArticle()
+    {
+        return $this->twig->render('techwatch_item/create_article.html.twig');
     }
 }

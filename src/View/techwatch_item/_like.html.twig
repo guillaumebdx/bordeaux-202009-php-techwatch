@@ -1,7 +1,5 @@
 <div class="icon">
-    <form action="/article/like/{{  article.id }}" method="post">
-        <button class="btn btn-primary btn-lg">
-            <i class="fa fa-star" aria-hidden="true"> {{  article.star }}</i>
-        </button>
-    </form>
+    <button type="button" class="btn btn-primary btn-lg star">
+        <i class="fa fa-star-o" aria-hidden="true" data-articleid="{{  article.article_id }}" data-userid="{{ article.user_id }}" data-starcount="{{ article.star }}">{{ article.star }}</i>
+    </button>
 </div>

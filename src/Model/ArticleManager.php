@@ -26,23 +26,42 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->query($query)->fetch();
         return $statement;
     }
-    public function addLike(int $articleId):void
+    public function addLike(int $articleId)
     {
         $query = "UPDATE " . self::TABLE . " SET star = star + 1 WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
+        return $this->selectOneById($articleId);
     }
 
-    public function getArticleOrderBy(string $what): array
+    public function getArticleOrderBy(string $field): array
     {
+
+        {
             $query = "SELECT a.id AS article_id, a.title, 
                         a.image_url, a.article_url, a.description, 
-                        a.created_at, a.star
+                        a.created_at, a.star, a.user_id
                         FROM article a
                         JOIN user ON user.id = a.user_id
-                        ORDER BY " . $what . " LIMIT " . self::CAROUSEL_CARD_NUMBER;
+                        ORDER BY " . $field . " LIMIT " . self::CAROUSEL_CARD_NUMBER;
+
             return $this->pdo->query($query)->fetchAll();
+        }
+    }
+
+    public function getAllArticleOrderBy(string $field): array
+    {
+        {
+            $query = "SELECT a.id AS article_id, a.title, 
+                        a.image_url, a.article_url, a.description, 
+                        a.created_at, a.star, a.user_id
+                        FROM article a
+                        JOIN user ON user.id = a.user_id
+                        ORDER BY " . $field;
+
+            return $this->pdo->query($query)->fetchAll();
+        }
     }
 
     public function getArticleById(int $id)
@@ -97,5 +116,25 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':word', '%' . $word . '%', \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetchAll();
+    }
+
+    public function insertWatch(array $article): array
+    {
+        $query = "INSERT INTO " . self::TABLE . "(title,̀description,image_url,article_url)
+         VALUES (:title, :description, :image_url, :article_url)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('title', $article['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $article['description'], \PDO::PARAM_STR);
+        $statement->bindValue('image_url', $article['image_url'], \PDO::PARAM_STR);
+        $statement->bindValue('article_url', $article['article_url'], \PDO::PARAM_STR);
+        $statement->execute();
+        return $this->showWatch();
+    }
+    public function showWatch() :array
+    {
+        $query = "SELECT image_url FROM article
+                   WHERE id = :id ";
+        $statement = $this->pdo->query($query)->fetch();
+        return $statement;
     }
 }
