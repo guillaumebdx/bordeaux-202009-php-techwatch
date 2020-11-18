@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Model\ArticleManager;
+use App\Service\CommentValidator;
 
 class ArticleController extends AbstractController
 {
@@ -40,9 +41,21 @@ class ArticleController extends AbstractController
     public function addCommentUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $articleManager = new ArticleManager();
+            $articleManager = new ArticleManager();
+            $commentValidator = new CommentValidator($_POST);
+            $commentValidator->checkFields();
+            $errors = $commentValidator->getErrors();
+            $commentData = $_POST;
+            if (empty($errors)) {
                 $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
-                header("Location: /Article/getComment/" . $_POST['articleId']);
+                header("Location: /article/getComment/" . $_POST['articleId']);
+            }
+            return $this->twig->render('article_description.html.twig', [
+                'errors' => $errors,
+                'commentData' => $commentData,
+            ]);
+        } else {
+            echo 'méthode interdite';
         }
     }
 
