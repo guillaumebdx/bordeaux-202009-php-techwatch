@@ -1,6 +1,7 @@
 const stars = document.getElementsByClassName('star');
 for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener('click', (event) => {
+        let counters = document.getElementsByClassName('count-' + event.target.dataset.articleid);
         fetch('/star/add', {
             method: 'POST',
             headers: {
@@ -14,6 +15,11 @@ for (let i = 0; i < stars.length; i++) {
             })
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => addcount(counters,event.target.dataset.starcount))
     })
+}
+function addcount(counters, starcount) {
+    for (let i = 0; i <= counters.length; i++) {
+        counters[i].innerHTML = parseInt(starcount) + 1;
+    }
 }
