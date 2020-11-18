@@ -35,7 +35,7 @@ class HomeController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['search']) && !empty($_POST['search'])) {
-                $_POST['search'] = htmlspecialchars(trim($_POST['search']));
+                $_POST['search'] = trim($_POST['search']);
                 $search = $articleManager->searchBar($_POST['search']);
             }
             if (isset($_POST['search']) && empty($search)) {

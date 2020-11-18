@@ -61,6 +61,17 @@ class ArticleManager extends AbstractManager
         return $statement->fetch();
     }
 
+    public function addComment($userId, $articleId, $message)
+    {
+        $query = "INSERT INTO comment (`user_id`, `article_id`, `message`) 
+                    VALUES (:userId, :articleId, :message)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('userId', $userId, \PDO::PARAM_STR);
+        $statement->bindValue('articleId', $articleId, \PDO::PARAM_STR);
+        $statement->bindValue('message', $message, \PDO::PARAM_STR);
+        $statement->execute();
+    }
+
     public function getCommentData(int $id)
     {
         $query = "SELECT u.id AS user_id, u.username, c.id AS comment_id, c.article_id,

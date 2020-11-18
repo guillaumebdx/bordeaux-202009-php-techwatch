@@ -37,6 +37,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    public function addCommentUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $articleManager = new ArticleManager();
+                $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
+                header("Location: /Article/getComment/" . $_POST['articleId']);
+        }
+    }
+
     public function getComment($id)
     {
         $articleAndComment = new ArticleManager();
