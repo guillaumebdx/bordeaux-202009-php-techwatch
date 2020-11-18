@@ -53,7 +53,7 @@ class ArticleController extends AbstractController
         $articleData = $articleAndComment->getArticleById($id);
         $commentData = $articleAndComment->getCommentData($id);
 
-        return $this->twig->render('voir_plus.html.twig', [
+        return $this->twig->render('article_description.html.twig', [
             'article_data' => $articleData,
             'comment_data' => $commentData,
         ]);

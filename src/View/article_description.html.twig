@@ -16,8 +16,6 @@
         </div>
         <form method="post" action="/article/addCommentUser">
         <div class="form-group">
-            {{ dump(session.user.id) }}
-            {{ dump(article_data.article_id) }}
             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
             <input id="articleId" name="articleId" type="hidden" value="{{ article_data.article_id }}">
             <label for="exampleFormControlTextarea1"></label>

@@ -754,11 +754,21 @@ a:-webkit-any-link:hover{
     }
 }
 
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    .voir-plus{
+        width: 100%;
+    }
+    .voir-plus-picture{
+        width: 10em;
+    }
+}
+
 /* voir-plus section - end */
 
 /* search display home page - start */
 .search-info-list{
     margin-top: -8em;
+    margin-bottom: -8em;
 }
 
 .search-info-items{
