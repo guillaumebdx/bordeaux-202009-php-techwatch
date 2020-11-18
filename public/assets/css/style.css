@@ -779,3 +779,13 @@ a:-webkit-any-link:hover{
 
 /* search display home page - end */
 
+/* profile - page start */
+
+.profile-title{
+    font-family: var(--secondary-font);
+    color: var(--font-color);
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+/* profile - page end */

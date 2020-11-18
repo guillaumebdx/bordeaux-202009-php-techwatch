@@ -73,4 +73,13 @@ class UserController extends AbstractController
         session_destroy();
         header("Location: /");
     }
+
+    public function getUser()
+    {
+        $userManager = new UserManager();
+        $userData = $userManager->getUserById($_SESSION['user']['id']);
+        return $this->twig->render('profile.html.twig', [
+            'user_data' => $userData,
+        ]);
+    }
 }

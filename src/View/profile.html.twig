@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class ="voir-plus">
+    <h2 class="profile-title">Mes informations personnelles</h2>
+    <p class="voir-plus-text">Pseudo : {{ user_data.username }}</p>
+    <p class="voir-plus-text">Nom : {{ user_data.lastname }}</p>
+    <p class="voir-plus-text">Prénom : {{ user_data.firstname }}</p>
+    </div>
+{% endblock %}
