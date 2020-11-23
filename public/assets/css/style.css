@@ -765,3 +765,10 @@ a:-webkit-any-link:hover{
 }
 
 /* add article form end */
+
+/* delete user form start */
+.success {
+    font-family: var(--primary-font);
+    color: green;
+}
+/* delete user form end */

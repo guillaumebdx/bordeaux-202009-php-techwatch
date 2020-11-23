@@ -7,6 +7,9 @@
 {% block content %}
     <img class="fond" src="/assets/images/fond.png">
     <div class="container">
+        <div class="img">
+            <img src="/assets/images/computer.svg">
+        </div>
         <div class="login-content">
             <form action="/article/addWatch" method="post" class="add-article">
                 <div>
@@ -19,7 +22,7 @@
                             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
                             <input id="dateTime" name="dateTime" type="hidden" value="{{ date_time }}">
                             <h5>Titre</h5>
-                            <input type="text" name="title" class="input is-invalid" {% if userData.username %} value="{{ userData.username }}" {% endif %}>
+                            <input type="text" name="title" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
                             <div class="invalid-feedback">
                                 {{errors.title}}
                             </div>
@@ -31,7 +34,7 @@
                         </div>
                         <div class="div">
                             <h5>Lien vers l'article</h5>
-                            <input type="text" name="link" class="input is-invalid" {% if userData.firstname %} value="{{ userData.firstname }}" {% endif %}>
+                            <input type="text" name="link" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
                             <div class="invalid-feedback">
                                 {{errors.link}}
                             </div>
@@ -43,7 +46,7 @@
                         </div>
                         <div class="div">
                             <h5>URL de l'image</h5>
-                            <input type="text" name="picture" class="input is-invalid" {% if userData.lastname %} value="{{ userData.lastname }}" {% endif %}>
+                            <input type="text" name="picture" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
                             <div class="invalid-feedback">
                                 {{errors.picture}}
                             </div>
