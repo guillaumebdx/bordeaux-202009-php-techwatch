@@ -6,6 +6,7 @@ namespace App\Controller;
 
 
 use App\Model\UserManager;
+use App\Service\DeleteUserValidator;
 use App\Service\LoginValidator;
 use App\Service\RegisterValidator;
 
@@ -92,15 +93,15 @@ class UserController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
-            $loginValidator = new LoginValidator($_POST);
-            $loginValidator->checkFields();
-            $errors = $loginValidator->getErrors();
+            $deleteUserValidator = new DeleteUserValidator($_POST);
+            $deleteUserValidator->checkFields();
+            $errors = $deleteUserValidator->getErrors();
             $username = $_POST['username'];
             if (empty($errors)) {
-                $userId = $loginValidator->getUserId();
+                $userId = $deleteUserValidator->getUserId();
                 $userManager->deleteUser($userId);
                 return $this->twig->render('techwatch_item/form_delete_user.html.twig', [
-                    'errors' => $errors,
+                    'success' => 'Cet utilisateur a bien été supprimé.',
                 ]);
             }
             return $this->twig->render('techwatch_item/form_delete_user.html.twig', [

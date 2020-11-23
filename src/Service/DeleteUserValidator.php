@@ -6,6 +6,7 @@ namespace App\Service;
 
 class DeleteUserValidator extends FormValidator
 {
+
     public function checkFields()
     {
         parent::checkFields();

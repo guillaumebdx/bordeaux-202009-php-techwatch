@@ -21,10 +21,15 @@
                         </div>
                         <div class="div">
                             <h5>Username</h5>
-                            <input type="text" name="username" class="input is-invalid" {% if userData.username %} value="{{ userData.username }}" {% endif %}>
+                            <input type="text" name="username" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
                             <div class="invalid-feedback">
                                 {{errors.username}}
                             </div>
+                            {% if success %}
+                                <p class="success">
+                                    {{ success }}
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
