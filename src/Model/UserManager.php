@@ -43,4 +43,11 @@ class UserManager extends AbstractManager
         $statement->execute();
         return $statement->fetch();
     }
+
+    public function deleteUser(int $userId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $userId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

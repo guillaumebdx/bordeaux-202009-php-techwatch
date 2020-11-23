@@ -85,4 +85,13 @@ class ArticleController extends AbstractController
             header("Location: /news/articlesByDate/");
         }
     }
+
+    public function removeArticle()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $articleManager = new ArticleManager();
+            $articleManager->deleteArticle($_POST['articleId']);
+            header("Location: /");
+        }
+    }
 }

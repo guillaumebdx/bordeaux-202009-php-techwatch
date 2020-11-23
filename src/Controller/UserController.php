@@ -6,7 +6,6 @@ namespace App\Controller;
 
 
 use App\Model\UserManager;
-use App\Service\FormValidator;
 use App\Service\LoginValidator;
 use App\Service\RegisterValidator;
 
@@ -49,13 +48,14 @@ class UserController extends AbstractController
     public function check()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userManager = new UserManager();
             $loginValidator = new LoginValidator($_POST);
             $loginValidator->checkFields();
             $errors = $loginValidator->getErrors();
             $userData = $_POST;
             if (empty($errors)) {
+                $userData = $userManager->getUserById($loginValidator->getUserId());
                 $_SESSION['user'] = $userData;
-                $_SESSION['user']['id'] = $loginValidator->getUserId();
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_login.html.twig', [
@@ -81,5 +81,34 @@ class UserController extends AbstractController
         return $this->twig->render('techwatch_item/profile_page.html.twig', [
             'user_data' => $userData,
         ]);
+    }
+
+    public function delete()
+    {
+        return $this->twig->render('techwatch_item/form_delete_user.html.twig');
+    }
+
+    public function removeUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userManager = new UserManager();
+            $loginValidator = new LoginValidator($_POST);
+            $loginValidator->checkFields();
+            $errors = $loginValidator->getErrors();
+            $username = $_POST['username'];
+            if (empty($errors)) {
+                $userId = $loginValidator->getUserId();
+                $userManager->deleteUser($userId);
+                return $this->twig->render('techwatch_item/form_delete_user.html.twig', [
+                    'errors' => $errors,
+                ]);
+            }
+            return $this->twig->render('techwatch_item/form_delete_user.html.twig', [
+                'errors' => $errors,
+                'username' => $username,
+            ]);
+        } else {
+            echo 'méthode interdite';
+        }
     }
 }

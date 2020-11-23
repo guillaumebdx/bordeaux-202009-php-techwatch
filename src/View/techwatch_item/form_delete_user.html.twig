@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Supprimer un utilisateur
+{% endblock %}
+
+{% block content %}
+    <img class="fond" src="/assets/images/fond.png">
+    <div class="container">
+        <div class="img">
+            <img src="/assets/images/computer.svg">
+        </div>
+        <div class="login-content">
+            <form action="/user/removeUser" method="post">
+                <div>
+                    <img src="/assets/images/avatar.svg">
+                    <h2 class="title">Identification</h2>
+                    <div class="input-div user {{ userData.username ? 'focus' }}">
+                        <div class="i">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="div">
+                            <h5>Username</h5>
+                            <input type="text" name="username" class="input is-invalid" {% if userData.username %} value="{{ userData.username }}" {% endif %}>
+                            <div class="invalid-feedback">
+                                {{errors.username}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn-check" value="Supprimer">
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="/assets/js/main.js"></script>
+{% endblock %}

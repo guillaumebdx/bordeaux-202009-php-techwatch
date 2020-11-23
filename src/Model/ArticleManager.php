@@ -133,4 +133,11 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':dateTime', $dateTime, \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function deleteArticle(int $articleId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $articleId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
