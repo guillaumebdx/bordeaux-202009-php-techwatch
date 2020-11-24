@@ -266,6 +266,8 @@ footer {
 .card-title{
     font-family: var(--primary-font);
     color: var(--titles-color);
+    display: flex;
+    justify-content: center;
 }
 
 .carousel-control-next {
