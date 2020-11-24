@@ -266,6 +266,10 @@ footer {
     justify-content: flex-end;
 }
 
+.favorite .fa {
+    font-size: 2em;
+}
+
 .card-title {
     font-family: var(--primary-font);
     color: var(--titles-color);

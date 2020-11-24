@@ -46,4 +46,13 @@ class FavoriteManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function deleteFavorite(int $articleId)
+    {
+        $query = "DELETE FROM " . self::TABLE . " WHERE user_id=:user_id AND article_id=:article_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':user_id', (int)$_SESSION['user']['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':article_id', $articleId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

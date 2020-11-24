@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 
+use App\Model\FavoriteManager;
 use App\Model\UserManager;
 use App\Service\DeleteUserValidator;
 use App\Service\LoginValidator;
@@ -59,6 +60,13 @@ class UserController extends AbstractController
                 $userData = $userManager->getUserById($userId);
                 $_SESSION['user'] = $userData;
                 $_SESSION['user']['id'] = $userId;
+                $favorites = [];
+                $favoriteManager = new FavoriteManager();
+                $favoritesId = $favoriteManager->getAllFavorite();
+                foreach ($favoritesId as $favoriteId) {
+                    $favorites[$favoriteId['article_id']] = (int)$favoriteId['article_id'];
+                }
+                $_SESSION["favorites"] = $favorites;
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_login.html.twig', [
