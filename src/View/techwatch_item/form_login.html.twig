@@ -21,7 +21,7 @@
                         </div>
                         <div class="div">
                             <h5>Username</h5>
-                            <input type="text" name="username" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.password ? userData.password}}">
+                            <input type="text" name="username" class="input is-invalid {{ errors.username ? 'form-control' }}" value="{{ userData.password ? userData.password}}">
                             <div class="invalid-feedback">
                                 {{errors.username}}
                             </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="div">
                             <h5>Password</h5>
-                            <input type="password" name="password" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.password ? userData.password}}">
+                            <input type="password" name="password" class="input is-invalid {{ errors.password ? 'form-control' }}" value="{{ userData.password ? userData.password}}">
                             <div class="invalid-feedback">
                                 {{errors.password}}
                             </div>

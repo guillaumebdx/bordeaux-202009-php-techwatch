@@ -21,7 +21,7 @@
                         </div>
                         <div class="div">
                             <h5>Pseudo</h5>
-                            <input type="text" name="username" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
+                            <input type="text" name="username" class="input is-invalid {{ errors.username ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
                             <div class="invalid-feedback">
                                 {{errors.username}}
                             </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="div">
                             <h5>Prénom</h5>
-                            <input type="text" name="firstname" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
+                            <input type="text" name="firstname" class="input is-invalid {{ errors.firstname ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
                             <div class="invalid-feedback">
                                 {{errors.firstname}}
                             </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="div">
                             <h5>Nom</h5>
-                            <input type="text" name="lastname" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
+                            <input type="text" name="lastname" class="input is-invalid {{ errors.lastname ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
                             <div class="invalid-feedback">
                                 {{errors.lastname}}
                             </div>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="div">
                             <h5>Mot de passe</h5>
-                            <input type="password" name="password" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.password ? userData.password }}">
+                            <input type="password" name="password" class="input is-invalid {{ errors.password ? 'form-control' }}" value="{{ userData.password ? userData.password }}">
                             <div class="invalid-feedback">
                                 {{errors.password}}
                             </div>

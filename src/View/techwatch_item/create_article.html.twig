@@ -22,7 +22,7 @@
                             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
                             <input id="dateTime" name="dateTime" type="hidden" value="{{ date_time }}">
                             <h5>Titre</h5>
-                            <input type="text" name="title" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
+                            <input type="text" name="title" class="input is-invalid {{ errors.title ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
                             <div class="invalid-feedback">
                                 {{errors.title}}
                             </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="div">
                             <h5>Lien vers l'article</h5>
-                            <input type="text" name="link" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
+                            <input type="text" name="link" class="input is-invalid {{ errors.link ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
                             <div class="invalid-feedback">
                                 {{errors.link}}
                             </div>
@@ -46,14 +46,14 @@
                         </div>
                         <div class="div">
                             <h5>URL de l'image</h5>
-                            <input type="text" name="picture" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
+                            <input type="text" name="picture" class="input is-invalid {{ errors.picture ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
                             <div class="invalid-feedback">
                                 {{errors.picture}}
                             </div>
                         </div>
                     </div>
                     <div class="description">
-                        <textarea class="add-description" name="description" id="description" cols="50" rows="5" placeholder="Description de l'article"></textarea>
+                        <textarea class="add-description is-invalid {{ errors.description ? 'form-control' }}" name="description" id="description" cols="50" rows="5" placeholder="Description de l'article">{{ userData.description ? userData.description }}</textarea>
                         <div class="invalid-feedback">
                             {{errors.description}}
                         </div>
