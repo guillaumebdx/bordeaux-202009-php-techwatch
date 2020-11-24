@@ -300,6 +300,7 @@
 /* profile - page end */
 
 /* add article form start */
+/*
 .add-article {
     display: flex;
     flex-wrap: wrap;
@@ -308,6 +309,8 @@
     align-items: center;
     margin: 4em auto;
 }
+
+ */
 
 @media screen and (min-width: 300px) and (max-width: 800px) {
     .add-article {
@@ -326,3 +329,17 @@
 }
 /* delete user form end */
 
+/* css for create techwatch start*/
+.amber-textarea textarea.md-textarea{
+    border: 3px solid silver;
+    background: transparent;
+    color: var(--form-color)
+}
+
+
+.amber-textarea textarea.md-textarea:focus:not([readonly]) {
+    border: 3px solid var(--form-color);
+    box-shadow: 0 1px 0 0 var(--form-color);
+
+}
+/* css for create techwatch end*/
