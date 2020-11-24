@@ -14,5 +14,10 @@ class CreateArticleValidator extends FormValidator
                 $this->addError($fieldType, 'Ce champ est trop long');
             }
         }
+        if (!isset($this->errors['description'])) {
+            if (strlen($this->fields['description']) < 15) {
+                $this->addError('description', 'La description doit faire au moins 15 caractère.');
+            }
+        }
     }
 }
