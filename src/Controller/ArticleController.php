@@ -45,14 +45,16 @@ class ArticleController extends AbstractController
             $commentValidator = new CommentValidator($_POST);
             $commentValidator->checkFields();
             $errors = $commentValidator->getErrors();
-            $commentData = $_POST;
+            $commentData = $_POST['message'];
             if (empty($errors)) {
                 $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
                 header("Location: /article/getComment/" . $_POST['articleId']);
             }
+            $articleData = $articleManager->getArticleById($_POST['articleId']);
             return $this->twig->render('article_description.html.twig', [
                 'errors' => $errors,
                 'commentData' => $commentData,
+                'article_data' => $articleData,
             ]);
         } else {
             echo 'méthode interdite';
