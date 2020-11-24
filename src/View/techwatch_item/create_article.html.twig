@@ -1,16 +1,16 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Crée ta veille
+    Publie une veille
 {% endblock %}
 
 {% block content %}
     <img class="fond" src="/assets/images/fond.png">
-    <div class="container">
+    <div class="container add-article">
         <div class="login-content">
-            <form action="/article/addWatch" method="post" class="add-article">
+            <form action="/article/addWatch" method="post">
                 <div>
-                    <h2 class="title">Crée ta veille</h2>
+                    <h2 class="title">Publie une veille</h2>
                     <div  class="input-div title {{ userData.title ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -50,13 +50,13 @@
                         </div>
                     </div>
                     <div class="description">
-                        <textarea name="description" id="description" cols="50" rows="5" placeholder="Description de l'article"></textarea>
+                        <textarea class="add-description" name="description" id="description" cols="50" rows="5" placeholder="Description de l'article"></textarea>
                         <div class="invalid-feedback">
                             {{errors.description}}
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn-check" value="Valider">
+                <input type="submit" class="btn-check" value="Publier">
             </form>
         </div>
     </div>
