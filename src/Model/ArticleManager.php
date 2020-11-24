@@ -84,6 +84,7 @@ class ArticleManager extends AbstractManager
     {
         $query = "INSERT INTO comment (`user_id`, `article_id`, `message`) 
                     VALUES (:userId, :articleId, :message)";
+
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('userId', $userId, \PDO::PARAM_STR);
         $statement->bindValue('articleId', $articleId, \PDO::PARAM_STR);
@@ -118,23 +119,25 @@ class ArticleManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function insertWatch(array $article): array
+    public function addArticle($title, $link, $picture, $description, $dateTime, $userId)
     {
-        $query = "INSERT INTO " . self::TABLE . "(title,̀description,image_url,article_url)
-         VALUES (:title, :description, :image_url, :article_url)";
+        $query = "INSERT INTO  article (`title`, `article_url`, `image_url`, `description`, `created_at`, `user_id`)
+         VALUES (:title, :article_url, :image_url, :description, :dateTime, :userId)";
+
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('title', $article['title'], \PDO::PARAM_STR);
-        $statement->bindValue('description', $article['description'], \PDO::PARAM_STR);
-        $statement->bindValue('image_url', $article['image_url'], \PDO::PARAM_STR);
-        $statement->bindValue('article_url', $article['article_url'], \PDO::PARAM_STR);
+        $statement->bindValue(':title', $title, \PDO::PARAM_STR);
+        $statement->bindValue(':description', $description, \PDO::PARAM_STR);
+        $statement->bindValue(':image_url', $picture, \PDO::PARAM_STR);
+        $statement->bindValue(':article_url', $link, \PDO::PARAM_STR);
+        $statement->bindValue(':userId', $userId, \PDO::PARAM_STR);
+        $statement->bindValue(':dateTime', $dateTime, \PDO::PARAM_STR);
         $statement->execute();
-        return $this->showWatch();
     }
-    public function showWatch() :array
+
+    public function deleteArticle(int $articleId): void
     {
-        $query = "SELECT image_url FROM article
-                   WHERE id = :id ";
-        $statement = $this->pdo->query($query)->fetch();
-        return $statement;
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $articleId, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }

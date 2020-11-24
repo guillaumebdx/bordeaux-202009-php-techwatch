@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Service\CommentValidator;
+use DateTime;
+
 
 class ArticleController extends AbstractController
 {
@@ -42,6 +44,7 @@ class ArticleController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $articleManager = new ArticleManager();
+
             $commentValidator = new CommentValidator($_POST);
             $commentValidator->checkFields();
             $errors = $commentValidator->getErrors();
@@ -74,8 +77,38 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    public function createArticle()
+    public function articleForm()
     {
-        return $this->twig->render('techwatch_item/create_article.html.twig');
+        $presentTime = new DateTime();
+        $format = date_format($presentTime, "Y-m-d H:i:s");
+        return $this->twig->render('techwatch_item/create_article.html.twig', [
+        'date_time' => $format,
+        ]);
+    }
+
+    public function addWatch()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'];
+            $picture = $_POST['picture'];
+            $link = $_POST['link'];
+            $description = $_POST['description'];
+            $userId = $_POST['userId'];
+            $dateTime = $_POST['dateTime'];
+
+            $articleManager = new ArticleManager();
+            $articleManager->addArticle($title, $link, $picture, $description, $dateTime, $userId);
+
+            header("Location: /news/articlesByDate/");
+        }
+    }
+
+    public function removeArticle()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $articleManager = new ArticleManager();
+            $articleManager->deleteArticle($_POST['articleId']);
+            header("Location: /");
+        }
     }
 }

@@ -13,7 +13,7 @@
                     <a class="nav-link" href="/trends/articlesByTrend">Tendances</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="../Home/index">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="/home/index">
                 <input name ="search" class="form-control mr-sm-2" type="search" placeholder="Chercher une veille" aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
             </form>
@@ -26,14 +26,30 @@
             </a>
             {% if session.user %}
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Mon profil</a>
-                <a class="dropdown-item" href="#">Créer une veille</a>
+                <a class="dropdown-item" href="/user/getUser/{{ session.user.id }}">Mon profil</a>
+                <a class="dropdown-item" href="/article/articleForm">Publier une veille</a>
                 <a class="dropdown-item" href="/user/logout">Déconnexion</a>
                 <div class="dropdown-divider"></div>
             </div>
+                {% if session.user.is_admin %}
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/user/getUser/{{ session.user.id }}">Mon profil</a>
+                        <a class="dropdown-item" href="/article/articleForm">Créer une veille</a>
+                        <a class="dropdown-item" href="/user/delete">Supprimer un utilisateur</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/user/logout">Déconnexion</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/user/getUser/{{ session.user.id }}">Mon profil</a>
+                        <a class="dropdown-item" href="/article/articleForm">Créer une veille</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/user/logout">Déconnexion</a>
+                    </div>
+                {% endif %}
             {% else %}
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/user/login">Connection</a>
+                    <a class="dropdown-item" href="/user/login">Connexion</a>
                     <a class="dropdown-item" href="/user/register">S'inscrire</a>
                 </div>
             {% endif %}
