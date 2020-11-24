@@ -53,10 +53,12 @@ class UserController extends AbstractController
             $loginValidator = new LoginValidator($_POST);
             $loginValidator->checkFields();
             $errors = $loginValidator->getErrors();
+            $userId = $loginValidator->getUserId();
             $userData = $_POST;
             if (empty($errors)) {
-                $userData = $userManager->getUserById($loginValidator->getUserId());
+                $userData = $userManager->getUserById($userId);
                 $_SESSION['user'] = $userData;
+                $_SESSION['user']['id'] = $userId;
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_login.html.twig', [

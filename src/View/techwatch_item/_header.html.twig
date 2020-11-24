@@ -28,6 +28,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/user/getUser/{{ session.user.id }}">Mon profil</a>
                     <a class="dropdown-item" href="/article/articleForm">Publier une veille</a>
+                    <a class="dropdown-item" href="/favorite/list">Favoris</a>
                     {% if session.user.is_admin %}
                         <a class="dropdown-item" href="/user/delete">Supprimer un utilisateur</a>
                     {% endif %}

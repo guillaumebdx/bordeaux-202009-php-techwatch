@@ -23,7 +23,7 @@
             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
             <input id="articleId" name="articleId" type="hidden" value="{{ article_data.article_id }}">
             <label for="exampleFormControlTextarea1"></label>
-            <textarea name="message" class="form-control is-invalid" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici">{{ commentData }}</textarea>
+            <textarea name="message" class="is-invalid {{ errors ? 'form-control' }}" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici">{{ commentData }}</textarea>
             <div class="invalid-feedback">
                 {{errors.message}}
             </div>

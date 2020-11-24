@@ -2,11 +2,10 @@
     <div class="card bg-dark text-white">
         <img src="{{ article_of_week.image_url }}" class="card-img" alt="technological watch of the week">
     </div>
-    <div>
+    <div class="title-box">
         <h1 class="card-title">{{ article_of_week.title }}</h1>
     </div>
 </a>
-
 <div class="box-icon">
     <div class="icon">
         <form action="/article/like/{{  article_of_week.id }}" method="post">

@@ -248,6 +248,8 @@ footer {
 .card-body {
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 20px;
 }
 
 .card {
@@ -257,9 +259,22 @@ footer {
     margin-left: 1.5em;
 }
 
+.favorite {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .card-title {
     font-family: var(--primary-font);
     color: var(--titles-color);
+    justify-content: center;
+}
+
+.title-box {
+    display: flex;
+    justify-content: center;
 }
 
 .carousel-control-next {

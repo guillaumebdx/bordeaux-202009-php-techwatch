@@ -251,6 +251,10 @@
     text-align: center;
 }
 
+.is-invalid {
+    width: 100%;
+}
+
 .voir-plus-content {
     display: flex;
     flex-direction: column;
