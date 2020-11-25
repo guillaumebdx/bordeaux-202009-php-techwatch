@@ -18,7 +18,7 @@ class StarController
         $articleManager = new ArticleManager();
         $articleData = $articleManager->getArticleById($articleId);
         if ($starCount >= $articleData['star']) {
-            //$articleManager->addLike($articleId);
+            $articleManager->addLike($articleId);
         }
         $response = [
             'status' => 'success',
