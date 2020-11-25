@@ -1,11 +1,14 @@
 <div class="card card-article" style="width: 18rem;">
-        <div class="card-body">
-            <a href="{{ article.article_url }}">
-                <img src="{{ article.image_url }}" class="card-img-top article-picture" alt="image correspondant à l'article">
-                {% include 'techwatch_item/_slice_title.html.twig' %}
-            </a>
-            <a href="article/getComment/{{ article.article_id }}" class="card-info-plus">Voir plus</a>
-        </div>
+    {% if session.user %}
+        {% include 'techwatch_item/_favorite.html.twig' %}
+    {% endif %}
+    <div class="card-body">
+        <a href="{{ article.article_url }}">
+            <img src="{{ article.image_url }}" class="card-img-top article-picture" alt="image correspondant à l'article">
+            {% include 'techwatch_item/_slice_title.html.twig' %}
+        </a>
+        <a href="/article/getComment/{{ article.article_id }}" class="card-info-plus">Voir plus</a>
+    </div>
     {% include 'techwatch_item/_card_buttons.html.twig' %}
 </div>
 

@@ -5,8 +5,9 @@ namespace App\Controller;
 
 
 
+use App\Model\FavoriteManager;
 use App\Model\UserManager;
-use App\Service\FormValidator;
+use App\Service\DeleteUserValidator;
 use App\Service\LoginValidator;
 use App\Service\RegisterValidator;
 
@@ -49,13 +50,23 @@ class UserController extends AbstractController
     public function check()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userManager = new UserManager();
             $loginValidator = new LoginValidator($_POST);
             $loginValidator->checkFields();
             $errors = $loginValidator->getErrors();
+            $userId = $loginValidator->getUserId();
             $userData = $_POST;
             if (empty($errors)) {
+                $userData = $userManager->getUserById($userId);
                 $_SESSION['user'] = $userData;
-                $_SESSION['user']['id'] = $loginValidator->getUserId();
+                $_SESSION['user']['id'] = $userId;
+                $favorites = [];
+                $favoriteManager = new FavoriteManager();
+                $favoritesId = $favoriteManager->getAllFavorite();
+                foreach ($favoritesId as $favoriteId) {
+                    $favorites[$favoriteId['article_id']] = (int)$favoriteId['article_id'];
+                }
+                $_SESSION["favorites"] = $favorites;
                 header('Location: /');
             }
             return $this->twig->render('techwatch_item/form_login.html.twig', [
@@ -81,5 +92,34 @@ class UserController extends AbstractController
         return $this->twig->render('techwatch_item/profile_page.html.twig', [
             'user_data' => $userData,
         ]);
+    }
+
+    public function delete()
+    {
+        return $this->twig->render('techwatch_item/form_delete_user.html.twig');
+    }
+
+    public function removeUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userManager = new UserManager();
+            $deleteUserValidator = new DeleteUserValidator($_POST);
+            $deleteUserValidator->checkFields();
+            $errors = $deleteUserValidator->getErrors();
+            $username = $_POST['username'];
+            if (empty($errors)) {
+                $userId = $deleteUserValidator->getUserId();
+                $userManager->deleteUser($userId);
+                return $this->twig->render('techwatch_item/form_delete_user.html.twig', [
+                    'success' => 'Cet utilisateur a bien été supprimé.',
+                ]);
+            }
+            return $this->twig->render('techwatch_item/form_delete_user.html.twig', [
+                'errors' => $errors,
+                'username' => $username,
+            ]);
+        } else {
+            echo 'méthode interdite';
+        }
     }
 }

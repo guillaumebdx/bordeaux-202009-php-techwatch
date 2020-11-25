@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\FavoriteManager;
 
 class HomeController extends AbstractController
 {

@@ -5,7 +5,10 @@ namespace App\Controller;
 
 
 use App\Model\ArticleManager;
+use App\Service\CreateArticleValidator;
+use App\Service\CommentValidator;
 use DateTime;
+
 
 class ArticleController extends AbstractController
 {
@@ -42,8 +45,23 @@ class ArticleController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $articleManager = new ArticleManager();
-            $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
-            header("Location: /Article/getComment/" . $_POST['articleId']);
+
+            $commentValidator = new CommentValidator($_POST);
+            $commentValidator->checkFields();
+            $errors = $commentValidator->getErrors();
+            $commentData = $_POST['message'];
+            if (empty($errors)) {
+                $articleManager->addComment($_POST['userId'], $_POST['articleId'], $_POST['message']);
+                header("Location: /article/getComment/" . $_POST['articleId']);
+            }
+            $articleData = $articleManager->getArticleById($_POST['articleId']);
+            return $this->twig->render('article_description.html.twig', [
+                'errors' => $errors,
+                'commentData' => $commentData,
+                'article_data' => $articleData,
+            ]);
+        } else {
+            echo 'méthode interdite';
         }
     }
 
@@ -78,11 +96,31 @@ class ArticleController extends AbstractController
             $description = $_POST['description'];
             $userId = $_POST['userId'];
             $dateTime = $_POST['dateTime'];
+            $userData = $_POST;
 
             $articleManager = new ArticleManager();
-            $articleManager->addArticle($title, $link, $picture, $description, $dateTime, $userId);
+            $createArticleValidator = new CreateArticleValidator($_POST);
+            $createArticleValidator->checkFields();
+            $errors = $createArticleValidator->getErrors();
+            if (empty($errors)) {
+                $articleManager->addArticle($title, $link, $picture, $description, $dateTime, $userId);
+                header("Location: /news/articlesByDate/");
+            }
+            return $this->twig->render('techwatch_item/create_article.html.twig', [
+                'errors' => $errors,
+                'userData' => $userData,
+            ]);
+        } else {
+            echo 'méthode interdite';
+        }
+    }
 
-            header("Location: /news/articlesByDate/");
+    public function removeArticle()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $articleManager = new ArticleManager();
+            $articleManager->deleteArticle($_POST['articleId']);
+            header("Location: /");
         }
     }
 }

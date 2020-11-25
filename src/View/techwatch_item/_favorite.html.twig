@@ -1,0 +1,3 @@
+<div class="favorite">
+    <i class="fa {{ article.article_id in session.favorites ? 'fa-heart' : 'fa-heart-o'}} id-{{ article.article_id }}" aria-hidden="true" data-articleid="{{  article.article_id }}"></i>
+</div>

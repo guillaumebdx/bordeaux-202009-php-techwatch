@@ -26,6 +26,7 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->query($query)->fetch();
         return $statement;
     }
+
     public function addLike(int $articleId)
     {
         $query = "UPDATE " . self::TABLE . " SET star = star + 1 WHERE id=:id";
@@ -131,6 +132,13 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':article_url', $link, \PDO::PARAM_STR);
         $statement->bindValue(':userId', $userId, \PDO::PARAM_STR);
         $statement->bindValue(':dateTime', $dateTime, \PDO::PARAM_STR);
+        $statement->execute();
+    }
+
+    public function deleteArticle(int $articleId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $articleId, \PDO::PARAM_INT);
         $statement->execute();
     }
 }
