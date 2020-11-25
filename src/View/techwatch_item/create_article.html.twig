@@ -22,19 +22,19 @@
                             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
                             <input id="dateTime" name="dateTime" type="hidden" value="{{ date_time }}">
                             <h5>Titre</h5>
-                            <input type="text" name="title" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.username ? userData.username }}">
+                            <input type="text" name="title" class="input is-invalid {{ errors.title ? 'form-control' }}" value="{{ userData.title ? userData.title }}">
                             <div class="invalid-feedback">
                                 {{errors.title}}
                             </div>
                         </div>
                     </div>
-                    <div class="input-div keyword {{ userData.keyword ? 'focus' }}">
+                    <div class="input-div link {{ userData.link ? 'focus' }}">
                         <div class="i">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                         </div>
                         <div class="div">
                             <h5>Lien vers l'article</h5>
-                            <input type="text" name="link" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.firstname ? userData.firstname }}">
+                            <input type="text" name="link" class="input is-invalid {{ errors.link ? 'form-control' }}" value="{{ userData.link ? userData.link }}">
                             <div class="invalid-feedback">
                                 {{errors.link}}
                             </div>
@@ -46,14 +46,15 @@
                         </div>
                         <div class="div">
                             <h5>URL de l'image</h5>
-                            <input type="text" name="picture" class="input is-invalid {{ errors ? 'form-control' }}" value="{{ userData.lastname ? userData.lastname }}">
+                            <input type="text" name="picture" class="input is-invalid {{ errors.picture ? 'form-control' }}" value="{{ userData.picture ? userData.picture }}">
                             <div class="invalid-feedback">
                                 {{errors.picture}}
                             </div>
                         </div>
                     </div>
-                    <div class="description md-form amber-textarea active-amber-textarea">
-                        <textarea class="md-textarea form-control" name="description" id="description" cols="50" rows="3" placeholder="Description de l'article"></textarea>
+
+                    <div class="description">
+                        <textarea class="add-description is-invalid {{ errors.description ? 'form-control' }}" name="description" id="description" cols="50" rows="5" placeholder="Description de l'article">{{ userData.description ? userData.description }}</textarea>
                         <div class="invalid-feedback">
                             {{errors.description}}
                         </div>

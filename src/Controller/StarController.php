@@ -16,7 +16,10 @@ class StarController
         $userId = $jsonData['userid'];
         $starCount = $jsonData['starcount'];
         $articleManager = new ArticleManager();
-        $articleManager->addLike($articleId);
+        $articleData = $articleManager->getArticleById($articleId);
+        if ($starCount >= $articleData['star']) {
+            //$articleManager->addLike($articleId);
+        }
         $response = [
             'status' => 'success',
             'user' => $userId,

@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Articles Favoris{% endblock %}
+
+{% block content %}
+    <h2 class="title-articles-pages">Articles Favoris</h2>
+    <div id="articles-by-date-page" class ="articles-by-date-page">
+        {% for article in favorites %}
+            {% include 'techwatch_item/_article_card.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

@@ -59,7 +59,7 @@ footer {
     justify-content: center;
     align-items: flex-start;
     font-size: 20px;
-    padding: 50px 0 100px;
+    padding-top: 50px;
 }
 
 .bloc {
@@ -248,6 +248,8 @@ footer {
 .card-body {
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 20px;
 }
 
 .card {
@@ -257,9 +259,29 @@ footer {
     margin-left: 1.5em;
 }
 
+.favorite {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.favorite .fa {
+    color: var( --titles-color);
+    font-size: 2em;
+}
+
 .card-title {
     font-family: var(--primary-font);
     color: var(--titles-color);
+    justify-content: center;
+}
+
+.title-box {
+    display: flex;
+    justify-content: center;
 }
 
 .carousel-control-next {
@@ -370,7 +392,7 @@ a:-webkit-any-link:hover {
 
 .article-picture {
     width: 12em;
-    margin-top: 1em;
+    margin-top: -10px;
 }
 
 .article-picture:hover {
@@ -430,3 +452,4 @@ a:-webkit-any-link:hover {
     margin: 2em 2em 2em 5em;
 }
 /* search display home page - end */
+
