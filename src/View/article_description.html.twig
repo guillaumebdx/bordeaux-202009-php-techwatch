@@ -22,8 +22,10 @@
         <div class="form-group">
             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
             <input id="articleId" name="articleId" type="hidden" value="{{ article_data.article_id }}">
+            <div class="description md-form amber-textarea active-amber-textarea">
             <label for="exampleFormControlTextarea1"></label>
-            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici"></textarea>
+            <textarea name="message" class="md-textarea form-control" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici"></textarea>
+        </div>
         </div>
         <button type="submit" class="btn btn-voir-plus">Publier</button>
         </form>
