@@ -26,6 +26,7 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->query($query)->fetch();
         return $statement;
     }
+
     public function addLike(int $articleId)
     {
         $query = "UPDATE " . self::TABLE . " SET star = star + 1 WHERE id=:id";
