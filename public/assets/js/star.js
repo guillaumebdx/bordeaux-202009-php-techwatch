@@ -17,7 +17,6 @@ for (let i = 0; i < stars.length; i++) {
             })
         })
             .then(response => response.json())
-            .then(console.log(counters))
             .then(data => addcount(counters,event.target.dataset.starcount, articles))
     })
 }
