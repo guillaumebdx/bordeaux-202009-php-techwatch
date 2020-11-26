@@ -3,7 +3,7 @@
         {% include 'techwatch_item/_favorite.html.twig' %}
     {% endif %}
     <div class="card-body">
-        <a href="{{ article.article_url }}">
+        <a href="{{ article.article_url }}" target="_blank">
             <img src="{{ article.image_url }}" class="card-img-top article-picture" alt="image correspondant à l'article">
             {% include 'techwatch_item/_slice_title.html.twig' %}
         </a>
