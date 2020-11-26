@@ -324,6 +324,9 @@
     .add-description {
         width: 60%;
     }
+    .login-content h2 {
+        margin-top: 55px;
+    }
 }
 /* add article form end */
 
@@ -335,20 +338,55 @@
 /* delete user form end */
 
 /* css for create techwatch start*/
-.amber-textarea textarea.md-textarea{
+.amber-textarea textarea.add-description .is-invalid{
     border: 3px solid silver;
     background: transparent;
     color: var(--form-color)
 }
 
 
-.amber-textarea textarea.md-textarea:focus:not([readonly]) {
+.amber-textarea textarea.add-description .is-invalid:focus:not([readonly]) {
     border: 3px solid var(--form-color);
     box-shadow: 0 1px 0 0 var(--form-color);
 
 }
 
+.amber-textarea textarea.is-invalid{
+    border: 3px solid silver;
+    background: transparent;
+    color: var(--form-color)
+}
 
+.amber-textarea textarea.is-invalid:focus:not([readonly]) {
+    border: 3px solid var(--form-color);
+    box-shadow: 0 1px 0 0 var(--form-color);
+}
 
 
 /* css for create techwatch end*/
+
+@media screen and (min-width: 100px) and (max-width: 900px) {
+    .add-article {
+        width: fit-content;
+    }
+    .add-description {
+        width: 60%;
+    }
+    .login-content h2 .login-form{
+        margin-top: 55px;
+    }
+    .footer-contact {
+        padding-top: 50px;
+        padding-left: 100px;
+    }
+    .input-div > div > h5{
+        position: initial;
+    }
+    .container {
+        display: block;
+    }
+
+    .login-content img{
+        margin-top:60px;
+    }
+}
