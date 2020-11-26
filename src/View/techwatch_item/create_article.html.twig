@@ -21,7 +21,7 @@
                         <div class="div">
                             <input id="userId" name="userId" type="hidden" value="{{ session.user.id }}">
                             <input id="dateTime" name="dateTime" type="hidden" value="{{ date_time }}">
-                            <h5>Titre</h5>
+                            <h5 class="title-create-article">Titre</h5>
                             <input type="text" name="title" class="input is-invalid {{ errors.title ? 'form-control' }}" value="{{ userData.title ? userData.title }}">
                             <div class="invalid-feedback">
                                 {{errors.title}}
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <div class="description">
+                    <div class="description md-form amber-textarea active-amber-textarea">
                         <textarea class="add-description is-invalid {{ errors.description ? 'form-control' }}" name="description" id="description" cols="50" rows="5" placeholder="Description de l'article">{{ userData.description ? userData.description }}</textarea>
                         <div class="invalid-feedback">
                             {{errors.description}}

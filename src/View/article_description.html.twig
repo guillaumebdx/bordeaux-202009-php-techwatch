@@ -7,7 +7,7 @@
 {% block content %}
     <div class ="voir-plus">
         <div class="voir-plus-content">
-            <a href="{{ article_data.article_url }}">
+            <a href="{{ article_data.article_url }}" target="_blank">
                 <img src="{{ article_data.image_url }}" class="card-img-top article-picture voir-plus-picture" alt="image correspondant à l'article">
                 <p class="card-title">{{ article_data.title }}</p>
             </a>
@@ -24,7 +24,6 @@
             <input id="articleId" name="articleId" type="hidden" value="{{ article_data.article_id }}">
             <div class="description md-form amber-textarea active-amber-textarea">
             <label for="exampleFormControlTextarea1"></label>
-
             <textarea name="message" class="is-invalid {{ errors ? 'form-control' }}" id="exampleFormControlTextarea1" rows="5" cols="100" placeholder="Ecris ton commentaire ici">{{ commentData }}</textarea>
             <div class="invalid-feedback">
                 {{errors.message}}
@@ -39,7 +38,7 @@
                     <p class="voir-plus-text">{{ comment.message }} - {{ comment.username}} a publié ce message</p>
                     {% endfor %}
             {% else %}
-                <p class="voir-plus-text">Pas de commentaires pour le moment, sois le premier à commenter !</p>
+                <p class="voir-plus-text">Pas de commentaires pour le moment, connecte-toi et sois le premier à commenter !</p>
             {% endif %}
         </div>
     </div>
