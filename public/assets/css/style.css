@@ -365,7 +365,7 @@
 
 /* css for create techwatch end*/
 
-@media screen and (min-width: 100px) and (max-width: 900px) {
+@media screen and (min-width: 100px) and (max-width: 400px) {
     .add-article {
         width: fit-content;
     }
@@ -377,7 +377,7 @@
     }
     .footer-contact {
         padding-top: 50px;
-        padding-left: 100px;
+
     }
     .input-div > div > h5{
         position: initial;
@@ -388,5 +388,16 @@
 
     .login-content img{
         margin-top:60px;
+    }
+
+    .login-form{
+        display: block;
+    }
+
+    .input-div > div > input{
+        height: 0;
+    }
+    .login-content h2{
+        margin-top:0;
     }
 }
