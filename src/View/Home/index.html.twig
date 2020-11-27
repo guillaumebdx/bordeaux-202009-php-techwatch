@@ -6,7 +6,7 @@
         {% if search_data is not empty %}
             <h2 class="title-articles-pages"> Articles correspondant à la recherche : </h2>
             {% for title in search_data %}
-                <a href="{{ title.article_url }}">
+                <a href="{{ title.article_url }}" target="_blank">
                     <li class="search-info-items"> {{ title.title }} </li>
                 </a>
             {% endfor %}
